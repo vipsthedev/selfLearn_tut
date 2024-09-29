@@ -151,6 +151,11 @@ Topics to study
 		git add .
 		git commit -m "Initial commit"
 
+	- To add files to a Git repository, you'll go through a few simple steps. 
+	  These involve moving your changes into the staging area and then committing them to the repository. 
+	  Here’s a detailed explanation of each step
+
+	  
 	 -  Push Changes to the Remote Repository
 
 	 		- If you have made changes to the local repository and want to push them to the remote repository:
@@ -191,7 +196,8 @@ Topics to study
 
 
 Summary
-	git init: Initializes a new Git repository in your local directory.
+
+1/2	git init: Initializes a new Git repository in your local directory.
 	git add .: Adds files to the staging area.
 	git commit -m "message": Commits the changes to the repository.
 	git clone [URL]: Clones an existing repository from a remote server to your local machine.
@@ -199,7 +205,10 @@ Summary
 
 
 	----
-
+3
 	Use git config --global user.name "Your Name" and git config --global user.email "youremail@example.com" to set your global Git name and email.
 	Use git config --global --list to verify the configuration.
 	For repository-specific settings, use git config user.name "Repo Name" and git config user.email "repo@example.com".
+	
+	-----
+4 
