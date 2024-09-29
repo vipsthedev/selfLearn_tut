@@ -1,0 +1,204 @@
+Training >> 2. GIT Back
+Trainer: Samir
+Introduction:
+In this phase of training, trainee will learn about GIT commands, how to use those commands in regular project
+practise.
+Topics to study
+
+1.  Make GIT repository
+
+	To create a new Git repository, you have two main options:
+
+	1.1.Initialize a New Git Repository Locally: This is useful if you want to start tracking an existing project with Git.
+	1.2.Create a New Repository on GitHub/GitLab/Bitbucket and Clone It: This method involves setting up a repository on a remote Git hosting platform and then cloning it to your local machine.
+
+
+	1. Initialize a New Git Repository Locally
+
+
+		Step 1: Open Your Terminal or Command Prompt
+			Navigate to the root directory of your project:
+				cd path/to/your/project
+		Step 2: Initialize a New Git Repository
+			Run the following command to initialize a new Git repository in your project directory
+
+			git init
+
+				-This command creates a .git folder in your project's root directory. This folder contains all the necessary metadata and object files that Git needs to track changes in your project.
+
+		Step 3: Add Files to the Repository
+
+			You need to add the files you want to track to the staging area. You can add all files in the directory by running:
+
+				git add .
+
+		Step 4: Commit the Changes
+
+			git commit -m "Initial commit"
+
+
+2.  Clone GIT repository
+
+	- Create a New Repository on GitHub, GitLab, or Bitbucket and Clone It
+	- Once you've created the repository, you'll see a URL (either HTTPS or SSH). Use this URL to clone the repository to your local machine.
+
+	Sign in to your account.
+
+		Look for the option to create a new repository (usually a "New" button or "+" icon).
+
+		Fill out the repository information:
+
+		-Repository name: The name of your repository.
+		-Description (optional): A description of the repository.
+		-Public/Private: Set the visibility of the repository.
+		-Initialize with README: (Optional) Create a README file if desired.
+		-Click "Create repository" (the button text might vary depending on the platform).
+
+	1)HTTP
+
+		-Step 1 CLONE URL
+			
+			https://github.com/vipsthedev/selfLearn_tut.git
+
+		-Step 2: Add Files and Make Your First Commit
+	   		cd  selfLearn_tut
+
+		-Example
+
+		PS C:\wamp64\www\selfLearn_tut> git status
+		On branch main
+		Your branch is up to date with 'origin/main'.
+
+		nothing to commit, working tree clean
+
+
+
+	-------------
+	2)SSH
+		if you're using SSH:
+		
+			git clone git@github.com:username/repository.git
+
+	- Additional Setup for a Remote Repository
+
+	  If you initialized a local repository and want to connect it to a remote repository, you can add the remote URL using:
+
+	    git remote add origin https://github.com/username/repository.git
+
+	    Then push your changes to the remote repository:
+
+	    git push -u origin main
+
+3.  Add global configration like name, email
+
+	- To set up global configurations such as your name and email in Git, use the following commands. This sets the information that will be used in all repositories on your machine.
+
+
+	1. Set Your Name and Email Globally
+
+		Run these commands in your terminal or command prompt to configure your Git username and email globally:
+
+			git config --global user.name "Your Name"
+			git config --global user.email "youremail@example.com"
+
+			Replace "Your Name" with your actual name.
+			Replace "youremail@example.com" with your email address.
+	
+	2. Verify Your Global Configuration
+
+		You can verify that your global configuration has been set by running:
+
+		git config --global --list
+
+
+		output
+
+		PS C:\wamp64\www\selfLearn_tut> git config --global --list
+			user.email=vipul@indolytics.com
+			user.name=vipul agravat
+			user.password=vipul123456789
+
+	3. Local Configuration (Optional)
+
+		If you want to set the name and email for a specific repository (overriding the global configuration), navigate to that repository's directory and run:
+
+			git config user.name "Specific Repo Name"
+			git config user.email "specificrepo@example.com"
+
+	4. Additional Global Configuration
+
+
+		You can set other global configurations as well, such as the default text editor for Git:
+
+			git config --global core.editor "vim"
+
+			On Windows:
+
+				git config --global core.autocrlf true
+				
+
+	5. Configuration File Location
+
+		- The global configuration is stored in a file called .gitconfig in your home directory. You can also edit this file directly to change the settings:
+
+		On Windows: C:\Users\YourUsername\.gitconfig
+		On macOS/Linux: ~/.gitconfig
+
+4.  Add files to GIT repositry
+
+	- Add your project files to this directory. Then run:
+		git add .
+		git commit -m "Initial commit"
+
+	 -  Push Changes to the Remote Repository
+
+	 		- If you have made changes to the local repository and want to push them to the remote repository:
+
+		 		git push origin main
+		 	
+		 	- Note: The default branch might be named main or master. Make sure to use the correct branch name based on your repository settings.
+
+
+
+5.  Pull GIT repository
+6.  Check  file differnet before commit object
+7.  Commit files to GIT respository
+8.  Check git status [Untracked files, Changes not staged for commit, Changes to be committed]
+9.  Undo changes from modi
+10. Reset modified files
+11. Reset commited objects before push [hard reset]
+12. Push commited files to GIT repository
+13. Check GIT logs 
+14. Show particular commited object
+15. Stash the changes and how to apply changes back from stash
+16. GIT multiple branches [dev, master, 6.0, 6.0.1, 6.0.2]
+17. Create local GIT branch
+18. Push local GIT branch and make it remote branch
+19. Move between GIT branches
+20. Cherry-pick objects from one branch to another branch
+21. Continue cherry-pick and abort cherry-pick process
+22. Merge changes from one branch to another branch
+23. Rebase from one branch to another branch
+24. Clone GIT repository with specific branch
+
+1. https://www.sitepoint.com/git-for-beginners/
+2. https://www.freecodecamp.org/news/learn-the-basics-of-git-in-under-10-minutes-da548267cc91/
+3. https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet
+4.http://internal-docs.fads6.fiareads.com/index.php?id=91
+
+
+
+
+Summary
+	git init: Initializes a new Git repository in your local directory.
+	git add .: Adds files to the staging area.
+	git commit -m "message": Commits the changes to the repository.
+	git clone [URL]: Clones an existing repository from a remote server to your local machine.
+	git push origin main: Pushes local commits to the remote repository.
+
+
+	----
+
+	Use git config --global user.name "Your Name" and git config --global user.email "youremail@example.com" to set your global Git name and email.
+	Use git config --global --list to verify the configuration.
+	For repository-specific settings, use git config user.name "Repo Name" and git config user.email "repo@example.com".
