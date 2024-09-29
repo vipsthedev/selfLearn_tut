@@ -5,6 +5,7 @@ In this phase of training, trainee will learn about GIT commands, how to use tho
 practise.
 Topics to study
 
+
 1.  Make GIT repository
 
 	To create a new Git repository, you have two main options:
