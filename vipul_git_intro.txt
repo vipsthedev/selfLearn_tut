@@ -266,7 +266,175 @@ Topics to study
 					git rm --cached filename
 
 5.  Pull GIT repository
+
+	Pulling a Git repository means fetching the latest changes from a remote repository and integrating them into your local repository. This command combines two Git operations: fetching (retrieving new data from the remote) and merging (integrating the new changes into your local branch)
+
+	Pulling Changes from the Remote Repository
+
+		The git pull command is used to fetch changes from the remote repository and merge them into your local branch. Here’s the general syntax:
+
+		git pull <remote> <branch>
+
+			<remote>: The name of the remote repository (usually origin by default).
+			<branch>: The name of the branch you want to pull from (usually main or master).
+
+		Example
+			git pull origin main
+
+
+				Fetch: Downloads the latest changes from the main branch of the origin remote.
+				
+				Merge: Combines those changes with your current branch.
+
+		1. Understanding the Process
+
+			=> If there are no conflicts between your local changes and the remote changes, the merge will happen automatically.
+
+		2.Handling Merge Conflicts
+
+			=> Sometimes, you may have conflicts between your local changes and the changes in the remote repository. When this happens, Git will prompt you to resolve the conflicts manually.
+			=>Example
+
+				if there is a conflict in a file, Git will modify the file to show both your local changes and the changes from the remote:
+
+
+				<<<<<<< HEAD
+				Your local changes
+				=======
+				Changes from the remote repository
+				>>>>>>> branch-name
+
+				You need to manually edit the file to resolve the conflict, and then use the following commands to continue:
+
+					git add <conflicted-file>
+					git commit -m "Resolved merge conflict"
+
+		3. Checking the Remote Repository
+			To see which remote repository is connected to your local repository, you can use:
+
+				C:\wamp64\www\selfLearn_tut>git remote -v
+					origin  https://github.com/vipsthedev/selfLearn_tut.git (fetch)
+					origin  https://github.com/vipsthedev/selfLearn_tut.git (push)
+
+		4. Using git pull --rebase (Optional)
+
+			The git pull --rebase command is an alternative to the standard git pull command that, instead of performing a merge, performs a rebase. This can help maintain a cleaner, linear Git history by avoiding "merge commits" that can clutter the history with unnecessary branches
+
+				1.Fetch the changes from the remote repository (this part is the same as a normal git pull).
+				2.Rebase your local changes on top of the fetched changes, instead of merging them. This effectively reapplies your local changes as if they were made after the fetched commits, keeping a cleaner commit history.
+
+
+			Rebase vs Merge
+
+				Merge: Combines the remote changes with your local branch and creates a "merge commit" that shows both histories converging.
+
+				Rebase: Instead of merging, it takes your local changes and applies them on top of the remote changes, making it look like your changes were made after the fetched changes. This prevents extra "merge commits."
+
+			Benefits of Using git pull --rebase
+				
+				Cleaner Commit History:
+
+					By avoiding merge commits, you get a cleaner, more linear history that is easier to understand and review.
+
+				Better for Shared Repositories:
+
+					If you're working on a project with multiple contributors, a rebased history often looks simpler and more chronological.
+
+				Avoids Duplicate Merge Commits:
+
+					Merge commits can clutter the history, especially if you frequently pull changes from the remote. Using --rebase eliminates this.
+
+
+			Handling Conflicts in git pull --rebase
+
+				Just like with a normal merge, conflicts can occur when using git pull --rebase. The difference is in how you resolve them:
+
+				If there’s a conflict, Git will pause the rebase and give you a chance to resolve the conflicts.
+
+				After resolving the conflict, use the following commands to continue the rebase:
+
+					git add <conflicted-file>
+					git rebase --continue
+
+				If you want to abort the rebase and go back to your previous state, you can use:
+
+					git rebase --abort
+
+			Setting git pull --rebase as Default
+
+				git config --global pull.rebase true
+
 6.  Check  file differnet before commit object
+
+	In Git, you can check the differences between your staged changes (the changes that are ready to be committed) and the latest commit or a specific commit object. This is useful when you want to verify exactly what has changed before making a commit.
+
+	1.Check Differences Between Working Directory and Staging Area
+
+		To see the changes that have been made in your working directory but not yet staged (i.e., the files you have edited but haven't run git add on yet):
+
+			git diff
+
+	2.  Check Differences Between Staged Changes and the Last Commit
+
+		To check the differences between the staged files (the files you have added with git add) and the latest commit (HEAD), you can use the following command:
+
+
+			git diff --staged
+
+			git add myfile.txt
+			git diff --staged
+
+	3. Check Differences Between the Working Directory and a Specific Commit
+
+		If you want to compare your working directory (modified files) with a specific commit (for example, the last commit or a commit with a specific hash), you can use:
+
+			git diff <commit-hash>
+
+			git diff 36e6875dd0a7a9bbb511710e14dae45a57b8e73e
+
+	4. Check Differences Between Two Specific Commits
+
+		git diff <commit-hash-1> <commit-hash-2>
+		git diff 36e6875dd0a7a9bbb511710e14dae45a57b8e73e 7306f1a7d1002d80858be8b9921debafd79719de
+
+	5. Check Differences for a Specific File Before Committing
+
+		If you want to check the differences for a specific file before committing, you can run:
+
+			git diff <file-path>
+
+			git diff myfile.txt
+
+	6. Using git status to Check Differences
+
+		Although git status does not show the actual diff, it is useful to check which files have been modified, staged, or are ready to be committed:
+
+
+			git status
+
+
+		This shows a summary of:
+
+			Modified files (but not yet staged).
+			Staged files (ready to be committed).
+			Untracked files.
+
+
+		1.Check what has changed but not yet staged:
+			git diff
+		2.Stage the file:
+			git add myfile.txt
+		3.Check the differences between the staged file and the last commit:
+			git diff --staged
+		4. If everything looks good, commit:
+			git commit -m "Update myfile.txt"
+
+	7. View Full History and Diffs Using git log with Diffs
+
+		You can also view previous commits with the diffs included to understand how files have changed over time:
+
+			git log -p
+
 7.  Commit files to GIT respository
 8.  Check git status [Untracked files, Changes not staged for commit, Changes to be committed]
 9.  Undo changes from modi
@@ -291,9 +459,10 @@ Topics to study
 3. https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet
 4.http://internal-docs.fads6.fiareads.com/index.php?id=91
 
-[6:35 am, 19/10/2024] Agravat Vipul: https://youtu.be/6El8Ia4fYDc?si=3hi-9eLFqPk-6woJ
-[6:43 pm, 19/10/2024] Agravat Vipul: https://youtu.be/cFViH1UnU6M?si=IY0yA4FBRpCbFdPg
-[6:45 pm, 19/10/2024] Agravat Vipul: https://youtu.be/QKVarScQigI?si=N8MXVbQbbDN_-thd
+youtube
+	https://youtu.be/6El8Ia4fYDc?si=3hi-9eLFqPk-6woJ
+	https://youtu.be/cFViH1UnU6M?si=IY0yA4FBRpCbFdPg
+	https://youtu.be/QKVarScQigI?si=N8MXVbQbbDN_-thd
 
 
 
@@ -323,3 +492,28 @@ git add path/to/directory/: Adds all files in a specific directory.
 git add *.extension: Adds all files of a specific extension.
 git add -p: Interactive mode for adding changes selectively.
 git add -f filename: Forces adding a file that is ignored by .gitignore.
+
+
+5.	
+Summary of git pull
+
+	The git pull command fetches and integrates changes from the remote repository into your local repository.
+	Example: git pull origin main pulls changes from the main branch of the origin remote.
+	You may encounter merge conflicts that need to be manually resolved if your local changes conflict with the remote changes.
+	
+	You can use git pull --rebase to keep a linear history when pulling changes.
+		
+		 --rebase:
+			What it does: Fetches changes from the remote and rebases your local changes on top of the remote commits.
+			Benefits: Produces a cleaner, linear history without merge commits.
+			Conflicts: If conflicts arise, resolve them using git add and git rebase --continue.
+			Set as default: You can configure Git to always rebase when pulling with git config --global pull.rebase true.
+
+6.
+Summary of Commands Diff:
+
+	git diff: Shows differences between the working directory and the staging area.
+	git diff --staged: Shows differences between the staged changes and the last commit.
+	git diff <commit-hash>: Shows differences between the current state and a specific commit.
+	git diff <commit-hash-1> <commit-hash-2>: Shows differences between two specific commits.
+	git status: Shows the current status of the working directory, including modified, staged, and untracked files.
