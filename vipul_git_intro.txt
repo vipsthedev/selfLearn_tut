@@ -66,7 +66,9 @@ Topics to study
 
 		-Example
 
+		git clone https://github.com/vipsthedev/selfLearn_tut.git
 		PS C:\wamp64\www\selfLearn_tut> git status
+		
 		On branch main
 		Your branch is up to date with 'origin/main'.
 
@@ -75,6 +77,7 @@ Topics to study
 
 
 	-------------
+
 	2)SSH
 		if you're using SSH:
 		
@@ -155,16 +158,112 @@ Topics to study
 	  These involve moving your changes into the staging area and then committing them to the repository. 
 	  Here’s a detailed explanation of each step
 
-	  
-	 -  Push Changes to the Remote Repository
+	  	1. Navigate to Your Repository
+		2. Check Repository Status
+			Before adding files, it's often helpful to see the current status of your repository using:
+				git status
+		3. Add Files to the Staging Area
 
-	 		- If you have made changes to the local repository and want to push them to the remote repository:
+			The staging area is where you prepare files that you want to commit. Here’s how to add files to it:
+
+
+			Option 1: Add All Files
+
+					To add all changes (new files, modified files, and deleted files) in the repository to the staging area, use:
+
+						git add .
+						/
+						git add -A
+
+							git add . adds all changes in the current directory and all nested subdirectories.
+
+							git add -A stages all changes in the repository, including those outside the current directory. This is equivalent to git add --all.
+
+
+					
+					The . tells Git to add all changes in the current directory and its subdirectories.
+
+			Option 2: Add Specific Files
+
+				If you want to add specific files or directories, specify them like this:
+					git add filename1 filename2
+				Example	
+
+					git add vipul_selfLearn_tut.text vipul.txt
+
+				You can also add an entire directory:
+
+					git add /php/
+
+			Option 3: Add Changes to a Specific Type of Files
+
+				You can use wildcards to add files of a specific type. For example, to add all .html files:
+
+					git add *.html
+
+			Option 4: Add Changes Interactively
+
+				git add -p
+
+
+					The -p (or --patch) option opens an interactive mode that allows you to review each change before staging it. This is useful if you want to stage only certain parts of a file.
+			
+			Option 5: Adding Files in an Ignored Directory
+
+					If you need to add files in a directory that is listed in .gitignore but still want to track some specific files, use the -f flag:
+
+					git add -f path/to/ignored/file.txt
+
+					The -f (or --force) option forces Git to add files that would otherwise be ignored.
+
+		4. Check the Staging Area (Optional)
+			
+				git status
+
+				Files that are ready to be committed will be shown in green under the "Changes to be committed" section.
+
+		5. Commit the Staged Files
+
+
+			Once the files are staged, you need to commit them to the repository. This creates a snapshot of the changes in the repository’s history. Use the following command:
+
+			git commit -m "Your commit message here"
+
+	 -  6. Push Changes to Remote Repository (If Applicable)
+
+			- If your repository is connected to a remote server (e.g., GitHub, GitLab, Bitbucket), you'll need to push the changes to make them available on the remote server.
+			- If you have made changes to the local repository and want to push them to the remote repository:
 
 		 		git push origin main
 		 	
 		 	- Note: The default branch might be named main or master. Make sure to use the correct branch name based on your repository settings.
+		
+		7. Understanding the Staging Area and Committing
+
+			Staging Area: When you use git add, you move files to the staging area. This area allows you to group changes before committing them. You can add files to the staging area incrementally to commit only specific changes.
+			Committing: A commit in Git creates a snapshot of the changes. You should always write clear and concise commit messages to describe the changes, as this helps in understanding the project's history.
 
 
+		Additional Notes
+			Ignoring Files
+			
+				If there are files that you do not want to track (like configuration files, environment files, or build artifacts), you can create a .gitignore file in your repository’s root directory. List the files and directories to ignore in this file.
+				Example
+					# .gitignore
+						node_modules/
+						.env
+						.DS_Store
+
+			Removing Files
+
+				If you need to remove files from the repository, you can use:
+
+				git rm filename
+				git commit -m "Removed filename"
+
+				- To stop tracking a file but keep it locally, use:
+
+					git rm --cached filename
 
 5.  Pull GIT repository
 6.  Check  file differnet before commit object
@@ -192,6 +291,10 @@ Topics to study
 3. https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet
 4.http://internal-docs.fads6.fiareads.com/index.php?id=91
 
+[6:35 am, 19/10/2024] Agravat Vipul: https://youtu.be/6El8Ia4fYDc?si=3hi-9eLFqPk-6woJ
+[6:43 pm, 19/10/2024] Agravat Vipul: https://youtu.be/cFViH1UnU6M?si=IY0yA4FBRpCbFdPg
+[6:45 pm, 19/10/2024] Agravat Vipul: https://youtu.be/QKVarScQigI?si=N8MXVbQbbDN_-thd
+
 
 
 
@@ -211,4 +314,12 @@ Summary
 	For repository-specific settings, use git config user.name "Repo Name" and git config user.email "repo@example.com".
 	
 	-----
-4 
+4 Summary of Common git add Options
+git add .: Adds all changes in the current directory and its subdirectories.
+git add -A or git add --all: Adds all changes in the entire repository.
+git add filename: Adds a specific file to the staging area.
+git add file1 file2 ...: Adds multiple specific files.
+git add path/to/directory/: Adds all files in a specific directory.
+git add *.extension: Adds all files of a specific extension.
+git add -p: Interactive mode for adding changes selectively.
+git add -f filename: Forces adding a file that is ignored by .gitignore.
