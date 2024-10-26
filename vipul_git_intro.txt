@@ -483,7 +483,7 @@ Topics to study
 		Add a “sign-off” line at the end of the commit message, often used in team collaborations:
 
 		git commit -s -m "Add feature XYZ with sign-off"
-		
+	8.
 
 8.  Check git status [Untracked files, Changes not staged for commit, Changes to be committed]
 9.  Undo changes from modi
