@@ -531,6 +531,19 @@ Topics to study
 
 			git revert <commit-hash>
 
+		4. Amending Commit Author Only
+				If you want to change the author of the most recent commit (e.g., if you forgot to set up your Git config correctly):
+
+				git commit --amend --author="New Author <newemail@example.com>"
+
+		5. Splitting a Commit
+
+			If you have changes in a single commit that you want to separate into multiple commits:
+
+			git reset -p HEAD^
+
+		6. 
+
 8.  Check git status [Untracked files, Changes not staged for commit, Changes to be committed]
 
 	The git status command gives a detailed view of your current working directory and staging area.
