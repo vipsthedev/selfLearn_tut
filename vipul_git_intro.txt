@@ -484,7 +484,7 @@ Topics to study
 
 		git commit -s -m "Add feature XYZ with sign-off"
 	8.
-		d
+		git commit -a -m "Commit all modified files without staging"
 
 8.  Check git status [Untracked files, Changes not staged for commit, Changes to be committed]
 9.  Undo changes from modi
