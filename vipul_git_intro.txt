@@ -483,8 +483,38 @@ Topics to study
 		Add a “sign-off” line at the end of the commit message, often used in team collaborations:
 
 		git commit -s -m "Add feature XYZ with sign-off"
-	8.
-		git commit -a -m "Commit all modified files without staging"
+
+		Author: vipul agravat <vipul@indolytics.com>
+			
+			Date:   Sun Oct 27 00:01:08 2024 +0530
+			
+			Add feature changes with sign-off
+
+		    Signed-off-by: vipul agravat <vipul@indolytics.com>
+
+	8. Commits Empty (No Changes)
+
+		Create an empty commit to mark a milestone or checkpoint
+
+		git commit --allow-empty -m "Marking milestone without file changes"
+
+	9.  Squash Commits
+
+		Combine multiple commits into one (useful for cleanup before merging):
+
+
+		git rebase -i HEAD~N  # Replace N with the number of commits to squash
+		# In the interactive editor, mark commits to be squashed with 's
+
+	10.  Commit in Verbose Mode
+
+		Show the commit diff in the command output for verification:
+
+		git commit -v -m "Commit with diff view"
+
+		
+
+
 
 8.  Check git status [Untracked files, Changes not staged for commit, Changes to be committed]
 9.  Undo changes from modi
