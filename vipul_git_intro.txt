@@ -62,7 +62,7 @@ Topics to study
 			https://github.com/vipsthedev/selfLearn_tut.git
 
 		-Step 2: Add Files and Make Your First Commit
-	   		cd  selfLearn_tut
+	   		cd  vipul_selfLearn_tut
 
 		-Example
 
@@ -435,9 +435,55 @@ Topics to study
 
 			git log -p
 
+--------------------------------------
 7.  Commit files to GIT respository
 	
+	=> To commit files to a Git repository, you can use different commands and options based on your workflow.
+	   Here’s a breakdown with examples:
 
+	1. Standard Commit
+
+		Commit all changes to tracked files:
+
+		git add .
+		git commit -m "Your commit message"
+
+	2. Adding Only Specific Files
+
+		Commit only specific files instead of all changes:
+
+			git add filename1 filename2
+			git commit -m "Commit specific files only"
+
+	3.  Commit with Interactive Mode
+
+		git add -p
+		git commit -m "Selective chunk commit"
+
+	4. Amend the Last Commit
+
+		Modify the last commit, adding new changes or adjusting the commit message
+
+		git commit --amend -m "Updated commit message with new changes"
+
+	5.  Skip the Staging Area
+
+		Directly commit changes without staging:
+
+		git commit -a -m "Commit all modified files without staging"
+
+	6.  Commit with Date and Author Override
+
+		Specify a different author or date for the commit:
+
+		git commit --author="Author Name <email@example.com>" --date="YYYY-MM-DD HH:MM:SS" -m "Commit with custom author and date"
+
+	7.  Sign-Off the Commit
+
+		Add a “sign-off” line at the end of the commit message, often used in team collaborations:
+
+		git commit -s -m "Add feature XYZ with sign-off"
+		
 
 8.  Check git status [Untracked files, Changes not staged for commit, Changes to be committed]
 9.  Undo changes from modi
