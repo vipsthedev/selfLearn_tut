@@ -436,6 +436,9 @@ Topics to study
 			git log -p
 
 7.  Commit files to GIT respository
+	
+
+
 8.  Check git status [Untracked files, Changes not staged for commit, Changes to be committed]
 9.  Undo changes from modi
 10. Reset modified files
@@ -453,6 +456,59 @@ Topics to study
 22. Merge changes from one branch to another branch
 23. Rebase from one branch to another branch
 24. Clone GIT repository with specific branch
+25. git Ignore
+
+		=> To ignore files or directories in Git, you need to use a special file called .gitignore. This file tells Git which files or patterns to ignore, meaning they won’t be tracked or shown in git status. Here’s a step-by-step guide:
+
+			1.Create or Open the .gitignore File
+
+				In your repository’s root directory, create a .gitignore file if it doesn’t exist
+			
+			2.Add Files or Directories to .gitignore
+
+				- Add specific file names or patterns to .gitignore. Here are some common use cases:
+				
+					Example
+
+					# Ignore a specific file
+					secrets.txt
+
+				- Ignore Files by Extension
+
+					*.log
+				- Ignore Specific Directory
+
+					/node_modules/
+					/public
+
+				- Ignore All Files in a Folder Except One
+
+					config/*
+					!config/app.test.js
+				
+				- Ignore Files in Nested Directories
+
+				 **/.env
+
+			3.Save the .gitignore File
+
+				Once you’ve added the patterns, save the .gitignore file.
+			4. Ensure Ignored Files Are Not Tracked by Git
+				
+				If the file you want to ignore is already tracked by Git (already in the repository), you need to untrack it first. Use:
+
+				git rm --cached <filename>
+
+			5.  Commit Your .gitignore File
+
+				After updating your .gitignore, you can commit the changes
+
+				git add .gitignore
+				git commit -m "Add .gitignore file"
+
+			6. Verify Ignored Files Are Not Listed
+
+				Run git status to ensure ignored files are no longer appearing in the list of untracked or tracked files.
 
 1. https://www.sitepoint.com/git-for-beginners/
 2. https://www.freecodecamp.org/news/learn-the-basics-of-git-in-under-10-minutes-da548267cc91/
@@ -517,3 +573,26 @@ Summary of Commands Diff:
 	git diff <commit-hash>: Shows differences between the current state and a specific commit.
 	git diff <commit-hash-1> <commit-hash-2>: Shows differences between two specific commits.
 	git status: Shows the current status of the working directory, including modified, staged, and untracked files.
+
+25. Summary git ignore 
+
+
+	1. Create/Open .gitignore: In the root directory of your repository, create a .gitignore file if it doesn't 	exist using:
+	2.Add Patterns to Ignore: Open .gitignore in a text editor and add patterns:
+
+		Ignore specific files: secrets.txt
+		Ignore all files with an extension: *.log
+		Ignore a directory: /node_modules/
+		Ignore files except one: config/* then !config/app.config.js
+	
+	3.Remove Already Tracked Files: If a file is already tracked, untrack it with:
+
+		git rm --cached <filename>
+	4.Commit .gitignore: Add and commit the .gitignore file to the repository:
+
+		git add .gitignore
+		git commit -m "Add .gitignore file"
+
+	5.Verify: Run git status to ensure ignored files don’t appear.
+
+		The .gitignore helps keep your repository clean by excluding unnecessary or sensitive files.
