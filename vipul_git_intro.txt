@@ -699,8 +699,120 @@ Topics to study
 
 	3. Undo All Changes Since the Last Commit	
 
+		If you want to discard all changes (both staged and unstaged) for a specific file or all files since the last commit:
+
+		git restore --source=HEAD --staged --worktree <filename>
+
+		git restore --source=HEAD --staged --worktree t.txt
+		
+		All
+		git restore --source=HEAD --staged --worktree .
+
+	4. Undo the Last Commit (Keeping Changes)
+
+		If you have committed the changes but want to undo the commit and keep the changes as staged:
+
+		git reset --soft HEAD~1
+
+		Explanation: This undoes the last commit but keeps your changes staged, so you can edit or modify the commit as needed
+
+
+	5. Undo the Last Commit (Discarding Changes)
+
+		If you have committed changes but want to discard the last commit entirely:
+
+		git reset --hard HEAD~1
+
+		Explanation: This permanently removes the last commit and all changes, reverting the repository to the state before the last commit. Use this with caution, as it discards changes entirely.
+
+
 10. Reset modified files
+
+	In Git, you can reset modified files back to their previous state using several different commands depending on the current state of the files (e.g., staged or unstaged). Here’s a guide on how to reset modified files with examples:
+
+	1. Reset Unstaged Changes (Changes in Working Directory)
+
+		If you’ve modified a file but haven’t staged it, you can reset it to the last committed state
+		git restore <filename>
+		git restore t.txt
+
+	2. Reset Staged Changes (Changes in Staging Area)
+
+		If you have already added changes to the staging area but want to unstage them without discarding the changes, you can move them back to the working directory.
+
+		git restore --staged <filename>
+
+	3. Reset All Changes (Staged and Unstaged) to Last Commit
+
+		If you want to completely discard all changes in both the staging area and the working directory and revert files to the last committed state, you can do so for a specific file or all files.
+
+		git restore --source=HEAD --staged --worktree <filename>
+	4. Reset Changes Using git reset (Alternative)
+
+		If you prefer to use git reset, you can reset the state of the files based on their current stage.
+
+		git reset <filename>
+		git reset t.txt
+
+		This command will unstage myfile.txt, keeping modifications in the working directory.
+
+	5. Reset Hard and Soft
+
+		If you have committed the changes but want to undo the commit and keep the changes as staged:
+
+		git reset --soft 
+
+		Command for Hard Reset (Discard All Changes):
+
+		git reset --hard
+
+
 11. Reset commited objects before push [hard reset]
+	
+	A hard reset in Git allows you to undo committed changes before they are pushed to a remote repository
+	This operation rewrites your commit history, making it useful for removing unwanted commits before they become part of the permanent remote history. 
+
+	What Does a Hard Reset Do?
+		When you perform a hard reset, Git:
+		1.Moves the HEAD pointer back to a specific commit.
+		2.Updates the staging area to match this commit.
+		3.Discards any changes in the working directory that occurred after the reset point.
+
+	This means any commits after the specified reset point are completely removed from your local history, and their changes are erased from your working directory.
+
+	Example
+
+		three commit 
+
+		A - B - C (HEAD)
+
+		To remove commits B and C, you would perform a hard reset to A.
+
+	Steps for a Hard Reset
+
+		1.Identify the Commit to Reset To
+
+			Use git log to view the commit history and identify the commit hash of the commit you want to keep.
+
+			git log --oneline
+		2.Perform the Hard Reset
+			Reset the repository to the desired commit (e.g., commit A).
+			git reset --hard a8d3f7a
+
+		3. Verify the Reset
+			
+			Use git log to check your commit history and confirm that only commit A remains.
+			git log --oneline
+
+		4. Push the Changes to Remote (if needed)
+
+			if you have previously pushed commits B and C to a remote repository and want to overwrite the remote history to match your local reset, you will need to force push:
+
+				git push origin main --force
+
+
+
+
 12. Push commited files to GIT repository
 13. Check GIT logs 
 14. Show particular commited object
@@ -843,6 +955,77 @@ Summary of Commands Diff:
 	git commit --no-verify -m "Commit message"	Commit without running pre-commit hooks
 	git reflog	View commit history, including detached and rebased commits
 	git push origin <commit-hash>:branch-name --force	Push a specific commit forcefully to a branch (use with caution)
+
+
+8 .Summary of status Commands
+
+Untracked Files :	git add <file>	Track the untracked files
+	Add files to .gitignore	Ignore the files permanently
+
+Changes Not Staged for Commit :	git add <file>	Stage changes to the staging area
+
+git restore <file>	Discard local changes and revert to last commit
+	Changes to Be Committed	git commit -m "Commit message"	Commit staged changes
+
+git restore --staged <file>	Unstage without discarding change
+
+	Each of these statuses provides visibility into which files are ready to commit, which ones still need staging, and which are entirely new to the repository, allowing you to manage your codebase systematically.
+
+9. Undo changes from modified file
+	
+	1.Discard unstaged changes in a file	
+			git restore <filename>	
+
+		Resets file to last commit, removing unstaged changes
+	
+	2.Unstage a staged file (keep changes in working dir)
+
+		git restore --staged <filename>
+
+		Unstages file but retains changes in working directory
+	
+	3.Discard all changes since last commit (single file)
+
+		git restore --source=HEAD --staged --worktree <filename>
+
+		Completely discards changes, resetting file to last commit
+	
+	4.Undo last commit but keep changes
+
+		git reset --soft HEAD~1
+		Undoes commit, keeps changes staged
+
+	5.Undo last commit and discard changes
+
+		git reset --hard HEAD~1
+
+		Removes last commit and discards all changes
+
+10. Reset Summary of Commands
+
+	1.Discard unstaged changes in a file
+		git restore <filename>
+		Resets file to last commit, removing unstaged changes
+
+	2.Unstage a staged file (keep changes in working directory)
+		git restore --staged <filename>
+		Unstages file but retains changes in working directory
+
+	3.Discard all changes since last commit (single file)
+		git restore --source=HEAD --staged --worktree <filename>
+		Resets file to last commit, discarding all changes
+
+	4.Reset all files to last commit
+
+		git restore --source=HEAD --staged --worktree .
+		Discards all changes in all files, resetting them to the last commit
+
+	5. Hard reset entire repository to last commit
+
+		git reset --hard
+
+		Resets working directory and staging area to the last commit, discarding all uncommitted changes
+
 25. Summary git ignore 
 
 
@@ -878,19 +1061,7 @@ Summary of Commands Diff:
 	git push origin <commit-hash>:branch-name --force	Push a specific commit forcefully to a branch (use with caution)
 
 
-8 .Summary of status Commands
 
-Untracked Files :	git add <file>	Track the untracked files
-	Add files to .gitignore	Ignore the files permanently
-
-Changes Not Staged for Commit :	git add <file>	Stage changes to the staging area
-
-git restore <file>	Discard local changes and revert to last commit
-	Changes to Be Committed	git commit -m "Commit message"	Commit staged changes
-
-git restore --staged <file>	Unstage without discarding change
-
-	Each of these statuses provides visibility into which files are ready to commit, which ones still need staging, and which are entirely new to the repository, allowing you to manage your codebase systematically.
 ==================================
 
 https://chatgpt.com/c/671c9c06-7844-800b-9766-ff0d0198bcd3
