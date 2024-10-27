@@ -935,6 +935,16 @@ Topics to study
 
 			This shows what would happen if you pushed but makes no actual changes, which can be useful for verifying before pushing.
 
+		10. Push with --mirror (Full Mirror of All Refs)
+
+			Used for mirroring an entire repository, including all refs, branches, tags, and remotes. Usually done for cloning a repo structure:
+
+
+				git push --mirror <remote-name>
+
+				This pushes all branches, tags, and refs to the remote, making it an exact mirror of the local repo. Useful for repository migrations.
+
+				
 
 13. Check GIT logs 
 14. Show particular commited object
