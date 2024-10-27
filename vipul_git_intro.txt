@@ -524,8 +524,90 @@ Topics to study
 		2. Set the template for all commits:
 
 			git config --global commit.template C:/wamp64/www/selfLearn_tut/.gitmessage.txt
-			
 
+		3. Reverting Commits
+
+			git revert <commit-hash>	
+		
+		4. Amending Commit Author Only
+
+			If you want to change the author of the most recent commit (e.g., if you forgot to set up your Git config correctly):
+
+			git commit --amend --author="New Author <newemail@example.com>"
+
+		5. Splitting a Commit
+
+			If you have changes in a single commit that you want to separate into multiple commits:
+			git reset -p HEAD^
+		6. Using commit -C to Reuse an Old Commit Message
+				git commit -C <commit-hash>
+
+		7. Using --fixup and --squash
+			
+			if you’re working with multiple commits and need to make quick adjustments:
+
+			--fixup: Create a commit intended to fix a previous commit, useful for marking corrections that you can squash later.
+
+			git commit --fixup=<commit-hash>
+
+			--squash: Combines the new commit into an older commit during a rebase
+
+			git commit --squash=<commit-hash>
+
+			After using --fixup or --squash, you can do an interactive rebase (git rebase -i) to consolidate commits.
+
+		8. Using commit -S to Sign Commits with GPG
+
+			git commit -S -m "Signed commit"
+
+
+			You’ll need to set up GPG keys first and configure Git to use them.
+
+		9. Mark Commit as WIP (Work in Progress)
+				When committing incomplete work:
+
+				git commit -m "WIP: Add partial implementation of feature XYZ"
+
+	 	10. Creating Annotated Tags at the Commit
+					For version control or to mark specific points in history:
+
+				git tag -a v1.0 -m "Version 1.0 release"
+				git push origin v1.0
+		11. Use Commit Reflog for Recovery
+
+			If you accidentally lost a commit, you can use Git’s reflog to recover:
+
+
+			git reflog
+			git checkout <commit-hash>
+
+
+			This allows you to view and recover from detached HEADs or lost commits by checking out the commit hash from the reflog.
+		12. Skip the Pre-Commit Hook
+
+			Sometimes, you may need to bypass pre-commit hooks (e.g., linting checks or tests) temporarily:
+
+			git commit --no-verify -m "Commit message bypassing pre-commit hook"
+
+		13. Create a Commit with Only Metadata Changes
+			Sometimes you want to record that you've modified a file without actually changing its content:
+
+				git commit --allow-empty --allow-empty-message -m ""
+
+		14.Force Push a Specific Commit to the Repository
+
+			In case you only want to push a specific commit without affecting others (be careful with force pushing):
+
+			git push origin <commit-hash>:branch-name --force
+
+		15  Using git reset to Unstage Changes
+
+
+			When you’ve accidentally staged changes and want to unstage them:
+
+			git reset HEAD filename
+
+			This only unstages the file without discarding the changes, moving it back to the working directory.
 8.  Check git status [Untracked files, Changes not staged for commit, Changes to be committed]
 
 	The git status command gives a detailed view of your current working directory and staging area.
