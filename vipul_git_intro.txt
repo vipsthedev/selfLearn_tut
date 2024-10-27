@@ -564,10 +564,36 @@ Topics to study
 
 			-> When committing incomplete work:
 
-				
+				This is a convention to label commits as a “Work in Progress” so you can identify them later and squash them into more complete commits before merging.
+
+		10. Creating Annotated Tags at the Commit
+
+			git tag -a v1.0 -m "Version 1.0 release
+
+			git push origin v1.0
+
+			This allows you to commit only certain parts of a file, which is useful when working on multiple features in the same file but want separate commits.
+
+
+		11. Add Only Part of a File
+
+			You can stage only specific parts of a file using:
+
+			git add -p filename
+
+		12. Use Commit Reflog for Recovery
+
+
+			If you accidentally lost a commit, you can use Git’s reflog to recover:
+
+			git reflog
+			git checkout <commit-hash>
+	
+			This allows you to view and recover from detached HEADs or lost commits by checking out the commit hash from the reflog.
+
 
 8.  Check git status [Untracked files, Changes not staged for commit, Changes to be committed]
-
+	
 	The git status command gives a detailed view of your current working directory and staging area.
 
 	1. Untracked Files
