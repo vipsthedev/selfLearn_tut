@@ -797,6 +797,7 @@ Topics to study
 			git log --oneline
 		2.Perform the Hard Reset
 			Reset the repository to the desired commit (e.g., commit A).
+
 			git reset --hard a8d3f7a
 
 		3. Verify the Reset
@@ -811,9 +812,99 @@ Topics to study
 				git push origin main --force
 
 
+		 If you want to keep changes from the removed commits in your working directory, consider using git reset --soft (keeps changes staged) or git reset --mixed (keeps changes unstaged) instead of --hard.
+		 By using git reset --hard, you can effectively clean up your commit history and prepare it for a clean push to the remote repository, as if the removed commits never happened.
 
 
 12. Push commited files to GIT repository
+
+		To push committed files to a Git repository, follow these steps:
+
+		1. Commit Your Changes Locally
+			First, ensure that your changes are committed to your local repository.
+
+			git add .
+			git commit -m "Your commit message"
+
+		2. Push Changes to Remote Repository
+			
+			To push your commits to a remote repository, use the git push command. Here’s how:
+
+			git push <remote-name> <branch-name>
+
+			git push origin main
+
+
+				origin is the default name for the remote repository. You can see it by running git remote -v.
+
+				main is the branch you’re pushing to. Replace main with your branch name if you’re working on a different one.
+
+		3. Pushing to a New Branch
+
+			If you’re pushing to a new branch that doesn’t exist on the remote yet, add the -u option to set up a tracking connection between the local and remote branches:
+
+			git push -u origin git-info-branch
+
+			The -u flag sets origin/new-branch as the default upstream branch, so in future pushes, you can simply use git push
+
+			Push in all branch 
+
+				git push --all origin
+
+			Force Push (Use Caution): If you need to overwrite remote history (e.g., after a reset), use --force:
+
+				git push --force origin main
+		4.Push Specific Commits
+
+			To push a single specific commit to the remote, you can use its commit hash:
+			git push <remote-name> <commit-hash>:<branch-name
+
+			git push origin abc1234:main
+
+
+			This pushes only the specified commit to the main branch of the origin remote. Useful in specific scenarios where you only want to share one commit.
+
+		5. Push to Multiple Remotes
+
+			If your repository has multiple remotes, you can push to all remotes with a single command:
+
+			git push --all
+
+
+			git push origin --all
+			git push upstream --all
+
+			 This pushes all branches to the specified remote(s). It’s especially useful for keeping multiple remote repositories in sync.
+
+
+		4.Push Tags
+
+			Tags are not automatically pushed with branches. To push all tags to the remote repository:
+			 
+			 git push --tags
+
+			Explanation: Tags are often used to mark release versions. This command ensures all local tags are pushed to the remote.
+
+		5. Force Push (Override Remote History)
+
+
+			Use with caution, as it can overwrite remote history, affecting collaborators. This is often used after a rebase or a reset.
+
+
+				git push --force <remote-name> <branch-name>
+		
+		6. Force Push With Lease
+
+			A safer way to force push, as it checks for changes on the remote and only pushes if there have been no changes by others.
+
+
+			git push --force-with-lease <remote-name> <branch-name>
+
+			git push --force-with-lease origin main
+
+
+			This prevents you from accidentally overwriting changes that others may have pushed to the remote branch.
+
 13. Check GIT logs 
 14. Show particular commited object
 15. Stash the changes and how to apply changes back from stash
