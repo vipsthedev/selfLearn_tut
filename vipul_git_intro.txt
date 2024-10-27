@@ -905,6 +905,27 @@ Topics to study
 
 			This prevents you from accidentally overwriting changes that others may have pushed to the remote branch.
 
+		7.  Push and Set Upstream (for New Branches)
+
+			When pushing a branch for the first time, -u sets up the upstream link so future pushes and pulls can use the branch’s name without specifying remote or branch names.
+
+			git push -u <remote-name> <branch-name>
+
+			git push -u origin feature-branch
+
+			After running this, you can use git pull and git push without specifying origin feature-branch again.
+
+		8. Delete a Remote Branch
+
+			To delete a branch on the remote, you can push a “delete” command:
+
+			git push <remote-name> --delete <branch-name>
+
+			git push origin --delete old-feature-branch
+
+			This removes the old-feature-branch from the remote repository, which can be useful for cleaning up unused branches.
+
+
 13. Check GIT logs 
 14. Show particular commited object
 15. Stash the changes and how to apply changes back from stash
