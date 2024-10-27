@@ -1213,6 +1213,106 @@ The git log command in Git is highly customizable and allows you to view commit 
 
 		This stashes only the unstaged changes, keeping the staged changes in the staging area.
 
+	8. Create a Named Stash
+		
+		You can give a stash a specific name to identify it easily
+		git stash push -m "Descriptive message"
+
+	9. Delete a Specific Stash
+		To delete a stash without applying it, use:
+		git stash drop stash@{n}
+
+		git stash drop stash@{0}
+
+	10 . Clear All Stashes
+
+		To delete all stashes at once, use:
+
+		git stash clear
+
+		This removes all stashes from the stash list permanently.
+
+
+	=====Details
+
+		1.Stash Only Staged Changes
+
+			Stash only the staged (indexed) changes, leaving unstaged changes in the working directory.
+
+				git stash push --staged
+
+			Only the changes that have been added to the staging area are stashed. Unstaged changes remain intact.
+
+		2.Stash with Untracked Files
+
+			By default, git stash does not include untracked files. Use the --include-untracked option to include them.
+
+				git stash push --include-untracked
+
+				git stash push --include-untracked -m "WIP: Include untracked files"
+
+			This stashes both tracked and untracked files, allowing you to clear your entire working directory.
+
+		3.  Stash with All Untracked and Ignored Files
+
+			If you want to stash all files, including untracked and ignored files (e.g., files listed in .gitignore), you can use --all.
+
+
+				git stash push --all
+
+				git stash push --all -m "WIP: Include all files"
+
+		4.Stash and Apply in a New Branch
+	
+			If you want to save your stash to a new branch and start working there, you can use git stash branch.
+
+			git stash branch <branch-name>
+
+			git stash branch feature-branch
+
+			This creates a new branch called feature-branch, applies the latest stash to it, and then removes the stash from the list.
+
+		5. Show Stash Details without Applying
+
+			To inspect the changes in a specific stash without applying them, you can use git stash show.
+
+
+			git stash show stash@{n}
+
+			Command (Full Diff of Changes):
+	
+			git stash show -p stash@{n}
+
+
+			The -p option shows a full diff of changes in stash@{0}, allowing you to inspect changes before deciding to apply or drop them.
+
+		6.  Stash with Multiple Message Lines
+
+			You can provide multi-line messages to describe your stash in more detail.
+
+			git stash push -m "First line of message" -m "Second line of message"
+
+			git stash push -m "WIP: Refactoring code" -m "Reorganize functions and update documentation"
+
+		7. Applying Stash and Keeping It in the List
+
+			If you want to apply a stash but keep it saved in the stash list, use git stash apply (instead of pop, which removes it).
+
+			git stash apply stash@{n}
+
+		8.  Create a Stash Without a Working Directory Clean-up
+
+			Sometimes, you may want to save the stash but keep changes in your working directory (instead of cleaning it out). You can combine this with the --keep-index option.
+
+
+			git stash push --keep-index
+
+		9. Stashing While Ignoring Whitespace Changes
+
+			If you have whitespace changes that you want to ignore in the stash, you can configure git diff to ignore whitespace, and then stash.
+
+			git -c diff.ignoreSubmodules=all stash push
+
 16. GIT multiple branches [dev, master, 6.0, 6.0.1, 6.0.2]
 17. Create local GIT branch
 18. Push local GIT branch and make it remote branch
@@ -1520,7 +1620,81 @@ git restore --staged <file>	Unstage without discarding change
 
 	 	Show commit diff with specified number of context lines
 
+15. Summary of Common Git Stash Commands
 
+	1.git stash
+			Stash all changes (both staged and unstaged)
+
+	2.git stash list	
+			List all stashed changes
+
+	3.git stash apply	
+
+		Apply the latest stash
+
+	4. git stash apply stash@{n}	
+
+			Apply a specific stash without removing it from the stash list
+
+	5. git stash pop	
+
+		Apply the latest stash and remove it from the stash list
+	
+	6. git stash pop stash@{n}	
+
+		Apply a specific stash and remove it from the stash list
+
+	7. git stash push --keep-index	
+
+		Stash only unstaged changes, keeping staged changes intact
+
+	8. git stash push -m "message"	
+
+			Stash changes with a custom message
+	
+	9. git stash drop stash@{n}
+			Delete a specific stash
+	
+	10.git stash clear	
+		Clear all stashes
+
+	These git stash commands provide flexibility in saving, viewing, applying, and managing temporary changes in your working directory, allowing you to shift contexts easily without losing your work.
+
+	===
+	1.git stash push --staged
+
+		Stash only staged (indexed) changes, keeping unstaged changes
+
+	2. git stash push --include-untracked
+
+		Stash tracked and untracked files
+
+	3.git stash push --all
+
+		Stash everything, including untracked and ignored files
+	
+	4.git stash branch <branch-name>
+
+		Create a new branch from stash and apply the stash to it
+
+	5.git stash show -p stash@{n}	
+
+		Show detailed diff of a stash without applying it
+
+	6.git stash push -m "message" -m "more"	
+
+
+			Save a stash with a multi-line message
+	7. git stash apply stash@{n}	
+		
+			Apply a stash without removing it from the stash list	
+
+	8. git stash push --keep-index	
+		Stash unstaged changes, keeping staged changes and working directory unchanged
+
+	9.git -c diff.ignoreSubmodules=all stash push
+		Ignore whitespace changes in stash
+		
 25. Summary git ignore 
 
 

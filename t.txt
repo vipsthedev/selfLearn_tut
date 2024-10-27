@@ -7,3 +7,10 @@ sdfsd
 
 sfsdfsd
 
+<<<<<<< Updated upstream
+=======
+1
+1
+1
+1
+>>>>>>> Stashed changes
