@@ -608,6 +608,8 @@ Topics to study
 			git reset HEAD filename
 
 			This only unstages the file without discarding the changes, moving it back to the working directory.
+
+=====================
 8.  Check git status [Untracked files, Changes not staged for commit, Changes to be committed]
 
 	The git status command gives a detailed view of your current working directory and staging area.
@@ -664,8 +666,40 @@ Topics to study
 			-> Commit the Changes: Use git commit -m "Commit message" to finalize these changes and store them in the repository.
 
 			-> Unstage a File: Use git restore --staged <file> to remove a file from the staging area without discarding its changes.
-			 
-9.  Undo changes from modi
+
+===========================
+9.  Undo changes from modified file
+	
+	To undo changes from a modified file in Git, you have several options depending on your needs. Here’s a breakdown of the methods with examples:
+
+	1. Undo Changes in Working Directory (Unstaged Changes)
+
+		If you’ve modified a file but haven’t staged it yet, you can discard the changes and revert the file to the last committed state.
+
+		git restore <filename>
+
+		Explanation: This resets file.txt to the state of the last commit, removing all uncommitted changes.
+
+		git checkout -- <filename>
+
+		PS C:\wamp64\www\selfLearn_tut> git checkout .\t.txt
+		Updated 1 path from the index
+
+		This command is equivalent to git restore but is the older syntax. Both commands revert the file to the last committed state.
+
+
+	2.Undo Changes in the Staging Area (Staged but Not Committed)
+
+		If you’ve already staged the changes but want to unstage them without discarding the modifications:
+
+		git restore --staged <filename>
+
+		git restore --staged t.txt
+
+		 This moves file.txt back to the working directory, keeping the modifications but removing it from the staging area. The changes are still present in your working directory but will not be included in the next commit unless you stage them again
+
+	3. Undo All Changes Since the Last Commit	
+
 10. Reset modified files
 11. Reset commited objects before push [hard reset]
 12. Push commited files to GIT repository
@@ -832,6 +866,18 @@ Summary of Commands Diff:
 	5.Verify: Run git status to ensure ignored files don’t appear.
 
 		The .gitignore helps keep your repository clean by excluding unnecessary or sensitive files.
+
+	===
+	git add -A	Stage all changes including untracked files
+	git commit --amend --author="Name <Email>"	Amend author of the most recent commit
+	git revert <commit-hash>	Create a new commit to undo changes of a specific commit
+	git commit --fixup=<commit-hash>	Create a fixup commit to be squashed later
+	git commit -S -m "Signed commit"	Create a GPG-signed commit
+	git commit -p	Commit only specific parts of files
+	git commit --no-verify -m "Commit message"	Commit without running pre-commit hooks
+	git reflog	View commit history, including detached and rebased commits
+	git push origin <commit-hash>:branch-name --force	Push a specific commit forcefully to a branch (use with caution)
+
 
 8 .Summary of status Commands
 
