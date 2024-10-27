@@ -926,6 +926,7 @@ Topics to study
 			git push origin --delete v1
 
 			This removes the old-feature-branch from the remote repository, which can be useful for cleaning up unused branches.
+		
 
 
 13. Check GIT logs 
