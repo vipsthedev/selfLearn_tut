@@ -1101,6 +1101,60 @@ The git log command in Git is highly customizable and allows you to view commit 
 
 
 14. Show particular commited object
+	
+	To view a specific commit in Git, you can use the commit’s hash and view it in detail. Here are several ways to inspect a particular commit:
+
+	1. Using git show
+		
+		The git show command displays information about a specific commit, including the commit message, author, date, and the actual changes made in that commit
+
+		 git show 
+		 git show <commit-hash>
+		 git show 07a2d992ddd4d172b2fa9f6acf12cc07f40611b9
+
+		 This displays detailed information about the commit with hash f7c3d2c, showing the diff (changes made) along with the commit metadata.
+
+	2. Using git log for Commit Metadata
+
+		If you want to see only the metadata (without the diff) of a specific commit, you can filter the log output to focus on the commit.
+
+		git log -1 <commit-hash>
+		git log -1 07a2d992ddd4d172b2fa9f6acf12cc07f40611b9
+
+	3.View Only the Commit Message
+
+		If you only need to see the commit message of a specific commit, you can use git log with a custom format to limit the output.
+
+		git log -1 --pretty=format:"%s" <commit-hash>
+		git log -1 --pretty=format:"%s" 07a2d992ddd4d172b2fa9f6acf12cc07f40611b9
+		git log -1 --pretty=format:"%s %ar %cn %cr %an %h %s" 07a2d992ddd4d172b2fa9f6acf12cc07f40611b9
+		git log -1 --pretty=format:"%s %ar %cn %cr %an %h %s"
+
+	4. Show the Changes in a Specific File in a Commit
+
+		If you want to see the changes made to a specific file within a particular commit, specify the file name with git show.
+
+		git show <commit-hash> -- <filename>
+		git show 07a2d992ddd4d172b2fa9f6acf12cc07f40611b9 -- t.txt
+
+	5.View a Commit in a Compact Format
+		You can use git diff-tree for a compact summary of changes in a specific commit.
+
+		git diff-tree --no-commit-id --name-only -r <commit-hash>
+
+		git diff-tree --no-commit-id --name-only -r 07a2d992ddd4d172b2fa9f6acf12cc07f40611b9
+
+		This shows only the file names changed in the specified commit, without the actual diffs.
+
+	6. View Commit with Context Lines
+
+		Show a commit’s changes with a specified number of context lines for each change (e.g., 5 lines).
+
+		git show -U<number> <commit-hash>
+
+		git show -U5  07a2d992ddd4d172b2fa9f6acf12cc07f40611b9
+
+		Displays the diff for the specified commit with 5 lines of context above and below each change.
 
 15. Stash the changes and how to apply changes back from stash
 16. GIT multiple branches [dev, master, 6.0, 6.0.1, 6.0.2]
@@ -1384,7 +1438,33 @@ git restore --staged <file>	Unstage without discarding change
 
 		Filter commits by both author and date range
 
+14.  Summary of Show particular commited object
 
+	 1.git show <commit-hash>
+
+	  	Show full details and diff of the specified commit
+
+	 2.git log -1 <commit-hash>
+
+	 	Display only the metadata of a specific commit
+
+	 3.git log -1 --pretty=format:"%s" <commit-hash>
+
+	 	Show only the commit message of the specified commit
+
+	 4. git show <commit-hash> -- <filename>
+
+	 	Show changes made to a specific file in a commit
+
+	 5.git diff-tree --no-commit-id --name-only -r <commit-hash>
+
+	 	Show only filenames changed in a commit
+
+	 6. git show -U<number> <commit-hash>
+
+	 	Show commit diff with specified number of context lines
+
+	 	
 25. Summary git ignore 
 
 
