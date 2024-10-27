@@ -1157,6 +1157,20 @@ The git log command in Git is highly customizable and allows you to view commit 
 		Displays the diff for the specified commit with 5 lines of context above and below each change.
 
 15. Stash the changes and how to apply changes back from stash
+	
+	In Git, git stash allows you to temporarily save changes you’ve made to your working directory without committing them, so you can work on something else. Later, you can retrieve (apply) those changes when you’re ready.
+
+	1. Stash Changes
+		
+		Save your current changes to the stash, clearing the working directory.
+
+		git stash
+
+		This stashes both staged and unstaged changes, leaving you with a clean working directory.
+
+
+
+
 16. GIT multiple branches [dev, master, 6.0, 6.0.1, 6.0.2]
 17. Create local GIT branch
 18. Push local GIT branch and make it remote branch
@@ -1464,7 +1478,7 @@ git restore --staged <file>	Unstage without discarding change
 
 	 	Show commit diff with specified number of context lines
 
-	 	
+
 25. Summary git ignore 
 
 
