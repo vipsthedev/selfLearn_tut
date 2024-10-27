@@ -524,7 +524,12 @@ Topics to study
 		2. Set the template for all commits:
 
 			git config --global commit.template C:/wamp64/www/selfLearn_tut/.gitmessage.txt
-			
+
+		3. Reverting Commits
+
+			To undo a specific commit while preserving the history, use git revert:
+
+			git revert <commit-hash>
 
 8.  Check git status [Untracked files, Changes not staged for commit, Changes to be committed]
 
