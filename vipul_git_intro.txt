@@ -942,11 +942,38 @@ Topics to study
 
 				git push --mirror <remote-name>
 
+				PS C:\wamp64\www\selfLearn_tut> git push --mirror origin
+				Enumerating objects: 5, done.
+				Counting objects: 100% (5/5), done.
+				Delta compression using up to 4 threads
+				Compressing objects: 100% (3/3), done.
+				Writing objects: 100% (3/3), 548 bytes | 274.00 KiB/s, done.
+				Total 3 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+				remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+				To https://github.com/vipsthedev/selfLearn_tut.git
+				   6e3ecfe..1af2362  git-info-branch -> git-info-branch
+				 * [new reference]   origin/HEAD -> origin/HEAD
+				 * [new reference]   origin/git-info-branch -> origin/git-info-branch
+				 * [new reference]   origin/main -> origin/main
+				 * [new reference]   origin/v1 -> origin/v1
+
 				This pushes all branches, tags, and refs to the remote, making it an exact mirror of the local repo. Useful for repository migrations.
 
-				
+			11. Push Refspec (Specific Reference)
+
+				Use refspecs to control what branches or tags are pushed.
+
+				git push <remote-name> <local-branch>:<remote-branch>
+
+				git push origin main:production
+
+				This pushes the main branch locally to the production branch on the remote. This is useful for syncing branches with different names or pushing only specific references.
+
+
 
 13. Check GIT logs 
+	
+	
 14. Show particular commited object
 15. Stash the changes and how to apply changes back from stash
 16. GIT multiple branches [dev, master, 6.0, 6.0.1, 6.0.2]
@@ -1157,6 +1184,45 @@ git restore --staged <file>	Unstage without discarding change
 		git reset --hard
 
 		Resets working directory and staging area to the last commit, discarding all uncommitted changes
+
+11. Summary of Important Push Commands
+
+	git push --tags
+
+		Push all tags to the remote repository
+
+	git push --all
+
+		Push all branches to the specified remote
+
+	git push --force
+
+		Force push, overwriting remote history
+
+	git push --force-with-lease
+
+		Safer force push that checks for remote changes before pushing
+
+	git push -u <remote> <branch>
+
+		Push new branch and set upstream link
+
+	git push <remote> --delete <branch>
+
+		Delete a branch on the remote
+
+	git push --dry-run
+
+		Preview changes before pushing
+
+	git push --mirror <remote>
+
+		Full mirror of the repository, including all refs and branches
+
+	git push <remote> <local-branch>:<remote-branch>
+
+		Push a branch to a different branch name on the remote
+
 
 25. Summary git ignore 
 
