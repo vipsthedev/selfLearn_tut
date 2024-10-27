@@ -548,6 +548,24 @@ Topics to study
 
 		7. Using --fixup and --squash
 
+			--fixup: Create a commit intended to fix a previous commit, useful for marking corrections that you can squash later.
+
+				git commit --fixup=<commit-hash>
+
+			--squash: Combines the new commit into an older commit during a rebase
+
+		8.  Using commit -S to Sign Commits with GPG
+			GPG-signed commits verify the author’s identity:
+
+			git commit -S -m "Signed commit"
+
+			-> You’ll need to set up GPG keys first and configure Git to use them.
+		9. Mark Commit as WIP (Work in Progress)
+
+			-> When committing incomplete work:
+
+				
+
 8.  Check git status [Untracked files, Changes not staged for commit, Changes to be committed]
 
 	The git status command gives a detailed view of your current working directory and staging area.
