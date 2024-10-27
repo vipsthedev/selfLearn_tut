@@ -512,11 +512,76 @@ Topics to study
 
 		git commit -v -m "Commit with diff view"
 
-		
+		=== More option
 
 
+		1. Using Templates for Commit Messages
+
+			Use a predefined template for commit messages to maintain consistency (like a checklist for each commit):
+			
+			First, create a template file (e.g., .gitmessage.txt):
+
+		2. Set the template for all commits:
+
+			git config --global commit.template ~/.gitmessage.txt
 
 8.  Check git status [Untracked files, Changes not staged for commit, Changes to be committed]
+
+	The git status command gives a detailed view of your current working directory and staging area.
+
+	1. Untracked Files
+		Description: Untracked files are files in your working directory that Git is not currently tracking. They haven’t been staged or committed before.
+
+		Cause: These files appear because you created or moved them into the repository directory, but Git does not yet know to include them in the version control system.
+
+		Status Message: Untracked files: followed by a list of files. These files will not be included in a commit unless explicitly staged.
+
+
+		Example
+
+			Untracked files:
+  			(use "git add <file>..." to include in what will be committed)
+        		new_file.txt
+        		src/new_script.js
+
+        -> To track these files, add them using git add <file>.
+		-> To ignore them, you can add them to your .gitignore file, so they no longer show up in git status.
+	 
+	 2. Changes Not Staged for Commit
+
+	 		Description: These are modifications to files that Git already tracks but haven’t been staged for the next commit. This includes edits to files that were already part of the repository but haven’t been added to the staging area.
+
+			Cause: You edited a tracked file but haven’t added it to the staging area, so it’s recognized by Git but not yet ready to commit.
+
+			Example
+
+			Changes not staged for commit:
+			  (use "git add <file>..." to update what will be committed)
+			  (use "git restore <file>..." to discard changes in working directory)
+			        modified:   existing_file.txt
+			        modified:   src/updated_script.js
+
+			  -> Stage the Changes: Use git add <file> to move the changes to the staging area for the next commit.
+			  -> Discard the Changes: Use git restore <file> if you want to discard changes in a file and revert it to the last committed state.
+
+	3.Changes to Be Committed
+
+			Description: These are changes that have been added to the staging area (also known as the index). They are ready to be committed to the repository.
+
+			Cause: You added modified files to the staging area, making them ready to be part of the next commit. Files in this section won’t change unless you modify, stage, or unstage them.
+
+			Example
+
+				
+				Changes to be committed:
+				  (use "git restore --staged <file>..." to unstage)
+				        new file:   new_file.txt
+				        modified:   existing_file.txt
+
+			-> Commit the Changes: Use git commit -m "Commit message" to finalize these changes and store them in the repository.
+
+			-> Unstage a File: Use git restore --staged <file> to remove a file from the staging area without discarding its changes.
+			 
 9.  Undo changes from modi
 10. Reset modified files
 11. Reset commited objects before push [hard reset]
@@ -651,6 +716,17 @@ Summary of Commands Diff:
 	git diff <commit-hash-1> <commit-hash-2>: Shows differences between two specific commits.
 	git status: Shows the current status of the working directory, including modified, staged, and untracked files.
 
+7. Summary of commands 
+
+	git add -A	Stage all changes including untracked files
+	git commit --amend --author="Name <Email>"	Amend author of the most recent commit
+	git revert <commit-hash>	Create a new commit to undo changes of a specific commit
+	git commit --fixup=<commit-hash>	Create a fixup commit to be squashed later
+	git commit -S -m "Signed commit"	Create a GPG-signed commit
+	git commit -p	Commit only specific parts of files
+	git commit --no-verify -m "Commit message"	Commit without running pre-commit hooks
+	git reflog	View commit history, including detached and rebased commits
+	git push origin <commit-hash>:branch-name --force	Push a specific commit forcefully to a branch (use with caution)
 25. Summary git ignore 
 
 
@@ -673,3 +749,20 @@ Summary of Commands Diff:
 	5.Verify: Run git status to ensure ignored files don’t appear.
 
 		The .gitignore helps keep your repository clean by excluding unnecessary or sensitive files.
+
+8 .Summary of status Commands
+
+Untracked Files :	git add <file>	Track the untracked files
+	Add files to .gitignore	Ignore the files permanently
+
+Changes Not Staged for Commit :	git add <file>	Stage changes to the staging area
+
+git restore <file>	Discard local changes and revert to last commit
+	Changes to Be Committed	git commit -m "Commit message"	Commit staged changes
+
+git restore --staged <file>	Unstage without discarding change
+
+	Each of these statuses provides visibility into which files are ready to commit, which ones still need staging, and which are entirely new to the repository, allowing you to manage your codebase systematically.
+==================================
+
+https://chatgpt.com/c/671c9c06-7844-800b-9766-ff0d0198bcd3
