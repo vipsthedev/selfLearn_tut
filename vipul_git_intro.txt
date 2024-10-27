@@ -1157,6 +1157,62 @@ The git log command in Git is highly customizable and allows you to view commit 
 		Displays the diff for the specified commit with 5 lines of context above and below each change.
 
 15. Stash the changes and how to apply changes back from stash
+	
+	In Git, git stash allows you to temporarily save changes you’ve made to your working directory without committing them, so you can work on something else. Later, you can retrieve (apply) those changes when you’re ready.
+
+	1. Stash Changes
+		
+		Save your current changes to the stash, clearing the working directory.
+
+		git stash
+
+		PS C:\wamp64\www\selfLearn_tut> git stash
+		Saved working directory and index state WIP on git-info-branch: 030ccfe stash details
+		
+		This stashes both staged and unstaged changes, leaving you with a clean working directory.
+
+	2. View Stashed Changes
+		To see a list of all stashes saved, use:
+
+		git stash list
+
+		PS C:\wamp64\www\selfLearn_tut> git stash list
+		stash@{0}: WIP on git-info-branch: 030ccfe stash details
+		Lists all stashes, each identified with an index (e.g., stash@{0}, stash@{1}, etc.).
+
+	3. Apply the Latest Stash
+
+		To reapply the most recent stash to your working directory without removing it from the stash list:
+
+
+		git stash apply
+
+ 	4. Apply a Specific Stash
+ 		if you have multiple stashes, you can apply a specific stash by referring to its index.
+
+ 		git stash apply stash@{n}
+ 		git stash apply stash@{1}
+ 	5. Apply and Remove the Latest Stash (git stash pop)
+
+ 		If you want to apply the latest stash and also remove it from the stash list, use git stash pop.
+
+ 		git stash pop
+
+ 	6. Apply and Remove a Specific Stash
+
+ 		git stash pop stash@{n}
+
+ 		git stash pop stash@{0}
+
+
+ 	7. Stash Only Unstaged Changes
+
+ 		If you only want to stash unstaged changes and leave staged changes intact, use the --keep-index option.
+
+ 		git stash push --keep-index
+
+		This stashes only the unstaged changes, keeping the staged changes in the staging area.
+
 16. GIT multiple branches [dev, master, 6.0, 6.0.1, 6.0.2]
 17. Create local GIT branch
 18. Push local GIT branch and make it remote branch
@@ -1464,7 +1520,7 @@ git restore --staged <file>	Unstage without discarding change
 
 	 	Show commit diff with specified number of context lines
 
-	 	
+
 25. Summary git ignore 
 
 
