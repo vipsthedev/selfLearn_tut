@@ -523,7 +523,8 @@ Topics to study
 
 		2. Set the template for all commits:
 
-			git config --global commit.template ~/.gitmessage.txt
+			git config --global commit.template C:/wamp64/www/selfLearn_tut/.gitmessage.txt
+			
 
 8.  Check git status [Untracked files, Changes not staged for commit, Changes to be committed]
 
