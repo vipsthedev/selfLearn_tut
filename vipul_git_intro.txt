@@ -1314,6 +1314,9 @@ The git log command in Git is highly customizable and allows you to view commit 
 			git -c diff.ignoreSubmodules=all stash push
 
 16. GIT multiple branches [dev, master, 6.0, 6.0.1, 6.0.2]
+	
+		Working with multiple branches in Git is a common practice in development workflows, especially when handling different versions and environments. Here’s a guide on managing and navigating between branches, using the branches dev, master, 6.0, 6.0.1, and 6.0.2 as examples
+		
 17. Create local GIT branch
 18. Push local GIT branch and make it remote branch
 19. Move between GIT branches
@@ -1694,7 +1697,7 @@ git restore --staged <file>	Unstage without discarding change
 
 	9.git -c diff.ignoreSubmodules=all stash push
 		Ignore whitespace changes in stash
-		
+
 25. Summary git ignore 
 
 
