@@ -609,9 +609,8 @@ Topics to study
 
 			This only unstages the file without discarding the changes, moving it back to the working directory.
 
-=====================
 8.  Check git status [Untracked files, Changes not staged for commit, Changes to be committed]
-
+	
 	The git status command gives a detailed view of your current working directory and staging area.
 
 	1. Untracked Files
