@@ -958,7 +958,7 @@ Topics to study
 				 * [new reference]   origin/v1 -> origin/v1
 
 				This pushes all branches, tags, and refs to the remote, making it an exact mirror of the local repo. Useful for repository migrations.
-
+The git log command in Git is highly customizable and allows you to view commit history with various options. Here’s a guide to useful git log options with examples:
 			11. Push Refspec (Specific Reference)
 
 				Use refspecs to control what branches or tags are pushed.
@@ -973,8 +973,135 @@ Topics to study
 
 13. Check GIT logs 
 	
+	The git log command in Git is highly customizable and allows you to view commit history with various options. Here’s a guide to useful git log options with examples:
+
+	1.Basic Git Log
+
+		View the default commit history with basic information (commit hash, author, date, and message).
+		 
+		 git log 
 	
+	2.Limit the Number of Commits
+
+		git log -n <number>
+
+		git log -n 10
+
+		This displays the last 10 commits in the log.
+
+	3. One-Line Format
+		
+		View each commit on a single line for a more compact view.
+
+		git log --oneline
+
+		git log --oneline -n 1
+
+		 Displays each commit as a single line with a shortened commit hash and message
+	
+	4. Show Commits for a Specific Author
+
+		Filter commits by a specific author.
+
+			git log --author="Author Name"
+			git log --author="vipul agravat"
+
+	5. View Commits that Include a Specific File
+
+		View commit history for changes made to a specific file.
+		git log -- <filename>
+
+		git log -- t.txt
+
+	6. Show Changes in Each Commit
+
+		Display the full diff (changes made) for each commit.
+
+		 git log -p
+
+		 This shows the complete diff of each commit, useful for reviewing changes.
+	7.Customizing Output Format
+
+		You can customize the format to show specific information for each commit.
+
+			git log --pretty=format:"%h - %an, %ar : %s"
+
+
+			%h: Abbreviated commit hash
+			%an: Author name
+			%ar: Relative date
+			%s: Commit message
+
+	8. Show Commit Graph
+
+		Display commits along with a visual graph of the branch structure.
+
+		git log --oneline --graph
+
+		Shows commits as a graph, useful for understanding branching and merging.
+
+	9.  Filtering Commits by Date Range
+		
+		View commits within a specific date range.
+
+			git log --since="YYYY-MM-DD" --until="YYYY-MM-DD"
+
+	10. Search Commit Messages
+
+		Search for commits containing specific keywords in their messages.
+
+		git log --grep="keyword"
+
+		git log --grep="push"
+
+	11. Show Only Merge Commits
+
+		Display only commits that were created by merging branches.
+
+
+		git log --merges
+
+	12.  Stat Option for Summary of Changes
+
+		Display a summary of changes made in each commit (file additions, deletions).
+
+			git log --stat
+
+			git log --stat --oneline
+
+		Explanation: Shows the number of lines added and deleted per file in each commit.
+
+	13. Log with File Path Limiting (Path Limiting)
+
+		Limit the log output to commits that changed files within a specific directory or file path
+
+		git log -- <path>
+
+		git log -- src/
+
+	14. View Commits with Committer Information
+
+
+		Show committer (who added the commit to the repository) instead of the author.
+
+		git log --pretty=format:"%h - %cn, %cr : %s"
+
+
+		Explanation:
+				%cn: Committer name
+				%cr: Relative date of the commit
+
+
+	15. Check for Specific Author and Date Together
+
+		Filter commits by a specific author and date range.
+
+		git log --author="Author Name" --since="YYYY-MM-DD" --until="YYYY-MM-DD"
+		git log --author="vipul agravat" --since="2024-10-01" --until="2024-12-01"
+
+
 14. Show particular commited object
+
 15. Stash the changes and how to apply changes back from stash
 16. GIT multiple branches [dev, master, 6.0, 6.0.1, 6.0.2]
 17. Create local GIT branch
@@ -1185,7 +1312,7 @@ git restore --staged <file>	Unstage without discarding change
 
 		Resets working directory and staging area to the last commit, discarding all uncommitted changes
 
-11. Summary of Important Push Commands
+12. Summary of Important Push Commands
 
 	git push --tags
 
@@ -1222,6 +1349,40 @@ git restore --staged <file>	Unstage without discarding change
 	git push <remote> <local-branch>:<remote-branch>
 
 		Push a branch to a different branch name on the remote
+
+13.Summary of Git Log Options
+
+	1.git log -n <number>
+		Show only the last specified number of commits
+	2.git log --oneline
+		Display commits in one-line format
+	3.git log --author="<Author Name>"
+		Filter commits by a specific author
+	4.git log -- <filename>
+		Show history of a specific file
+	5.git log -p
+		how full changes (diffs) for each commit
+	6.git log --pretty=format:"..."
+		Customize output format for commits
+			%h: Abbreviated commit hash
+			%an: Author name
+			%ar: Relative date
+			%s: Commit message
+	7.git log --oneline --graph
+		Display commit graph in one-line format
+	8.git log --since="YYYY-MM-DD" --until="YYYY-MM-DD"
+		Filter commits by date range
+	9.git log --grep="keyword"
+		Search for commits with specific keywords in messages
+	10.git log --merges
+		Show only merge commits
+	11.git log --stat
+		Show summary of changes made in each commit
+	12.git log -- <path>
+		git log -- <path>
+	13.git log --author="..." --since="..."
+
+		Filter commits by both author and date range
 
 
 25. Summary git ignore 
