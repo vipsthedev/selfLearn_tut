@@ -1316,15 +1316,387 @@ The git log command in Git is highly customizable and allows you to view commit 
 16. GIT multiple branches [dev, master, 6.0, 6.0.1, 6.0.2]
 	
 		Working with multiple branches in Git is a common practice in development workflows, especially when handling different versions and environments. Here’s a guide on managing and navigating between branches, using the branches dev, master, 6.0, 6.0.1, and 6.0.2 as examples
-		
+
+
+		1.  Initialize a Repository
+			
+			Start by creating or cloning a Git repository:
+
+			# Initialize a new Git repository
+			git init my-repo
+			cd my-repo
+
+			
+			# Alternatively, clone an existing repository
+			git clone <repository-url>
+			cd <repository-name>
+
+		2.  Create and Switch Between Branches
+
+				Use git branch to create the branches and git checkout or git switch to switch between them.
+
+					git branch dev
+				
+				List All Branches:
+
+					git branch
+
+
+		3. Work in Specific Branches
+
+			Switch to a branch using git checkout or git switch and make changes.
+
+
+			git switch dev
+			# Or
+			git checkout dev
+
+	 4. Push Branches to Remote
+
+	 		To share your branches with others, push them to the remote repository
+
+
+	 			git push origin master
+
+				# Push dev branch
+				git push origin dev
+
+	5.Track and Pull Remote Changes
+
+		Ensure your local branches are tracking their remote counterparts:
+
+			# Track dev branch
+			git branch --set-upstream-to=origin/dev dev
+
+			# Track master branch
+			git branch --set-upstream-to=origin/master master
+
+
+
+			# Pull changes for dev branch
+			git pull
+
+	6.Branch Use Case Example
+			master: The production-ready branch containing stable releases.
+			dev: The development branch where new features and bug fixes are implemented.
+			6.0, 6.0.1, 6.0.2: Feature or release branches for specific versions.
+
+	7. Delete Old or Unused Branches
+
+		After merging, delete old branches locally and remotely:
+
+			# Delete local branch
+				git branch -d 6.0
+
+			# Delete remote branch
+				git push origin --delete 6.0
+
 17. Create local GIT branch
+
+		1. Check Out Your Repository
+			If you don't already have a Git repository, clone an existing one or create a new one
+
+			# Clone an existing repository
+				git clone <repository-url>
+				cd <repository-name>
+
+				# OR Initialize a new repository
+				git init
+		2. Create a New Branch
+			Use the git branch command to create a new branch.
+
+			git branch <branch-name>
+
+		3. Switch to the New Branch
+			
+			Use the git switch command (or git checkout in older versions) to move to your new branch
+
+				git switch <branch-name>
+				# OR for older versions
+				git checkout <branch-name>
+
+			Alternatively, create and switch to the new branch in one command:
+			
+				git switch -c <branch-name>
+				# OR for older versions
+				git checkout -b <branch-name>			
+		4.  Verify the Current Branch
+
+				git branch
+
+				The active branch will be marked with an asterisk *.
+
+		5. Push the New Branch to Remote (Optional)
+			git push origin <branch-name>
+
 18. Push local GIT branch and make it remote branch
+
+	1.Verify Your Local Branch:
+		git branch
+
+		If you’re not on the branch you want to push, switch to it:
+			git switch <branch-name>  # or git checkout <branch-name>
+	2.Push the Local Branch to Remote:
+		Use the following command to push the branch to the remote repository:
+
+			git push -u origin <branch-name>
+
+			The -u flag sets up tracking between your local branch and the remote branch.
+	3. Verify the Remote Branch:
+
+		List remote branches to confirm the branch has been pushed
+			git branch -r
+
+		Alternatively, check on the remote repository platform (e.g., GitHub, GitLab).
+
+	4. Collaborate on the Remote Branch:
+
+		Other team members can now fetch and switch to the branch using:
+
+		git fetch
+		git switch <branch-name>
+
 19. Move between GIT branches
+	 1. List Available Branches
+		Use the command to see all Branches
+
+		git branch
+
+		This lists local branches. Add -a to include remote branches
+
+		git branch -a
+
+	2.Switch to a Branch
+		Use the git switch command to move to an existing branch:
+
+			git switch <branch-name>
+			Alternatively, use the older checkout command:
+
+			git checkout <branch-name>
+
+	3.Create and Switch to a New Branch
+		If the branch does not exist, create and switch in one step:
+
+		git switch -c <branch-name>
+			Or with checkout:
+		git checkout -b <branch-name>
+
+	4. Handle Uncommitted Changes
+
+		If there are uncommitted changes, either
+
+		 git add . && git commit -m "Save changes"
+
+			 git stash
+
+		 Retrieve the stash later with:
+			git stash pop
+
 20. Cherry-pick objects from one branch to another branch
+
+	Cherry-picking allows you to apply specific commits from one branch to another.
+
+	1. Identify the Commit(s) to Cherry-Pick
+
+	 	git log
+
+	 	Note the hash of the commit(s) you want to cherry-pick.
+
+	 2.Switch to the Target Branch
+
+	 	Move to the branch where you want to apply the commit:
+
+	 	git switch <target-branch>
+
+	 	git checkout <target-branch>
+
+	 3. Cherry-Pick the Commit(s)
+
+	 	1.1 Apply a single commit:
+
+		 	git cherry-pick <commit-hash>
+
+		1.2  Apply multiple commits (space-separated hashes):
+		
+			git cherry-pick <commit-hash1> <commit-hash2>	
+		
+		1.3 Apply a range of commits:
+
+			git cherry-pick <start-commit-hash>^..<end-commit-hash>
+
+	4. Resolve Merge Conflicts (if any)
+
+		Edit conflicting files to resolve them.
+
+			Stage the resolved files
+
+			git add <file>
+
+			Continue the cherry-pick process
+
+			git cherry-pick --continue
+
+	5.Abort Cherry-Pick (if needed)
+		
+		If you want to cancel the cherry-pick:
+
+			git cherry-pick --abort	
+
 21. Continue cherry-pick and abort cherry-pick process
+
+	When you encounter conflicts during a cherry-pick, you need to manually resolve them and continue the process.
+
+	Steps to Continue Cherry-Pick
+
+	1.Identify Conflicts
+		After a conflict occurs, Git will notify you about conflicting files. Check the status with
+
+		git status
+	2.Resolve the Conflicts
+		Open each conflicting file, resolve the issues by editing the file, and save the changes
+	3.Stage the Resolved Files
+		
+		After resolving conflicts, stage the files:
+			git add <file>
+		To stage all resolved files:
+			git add .
+	4. Continue the Cherry-Pick Process
+
+		Once all conflicts are resolved and staged, continue the cherry-pick with
+
+			git cherry-pick --continue
+	
+	5. Verify the Cherry-Pick Completion
+		
+		After the cherry-pick finishes, verify that the commit has been applied to your branch:
+
+		git log
+
+	Abort Cherry-Pick Process
+
+		If you decide not to proceed with the cherry-pick (e.g., due to complex conflicts or mistakes), you can abort it.
+
+	Steps to Abort Cherry-Pick
+
+	1. Abort the Cherry-Pick
+
+		Use the following command to cancel the cherry-pick process and revert to the state before the cherry-pick:
+			git cherry-pick --abort
+	2. Verify the Abort
+		git status
+
 22. Merge changes from one branch to another branch
+
+	Steps to Merge Changes Between Branches
+	
+	1.Switch to the Target Branch
+		Check out the branch where you want to merge changes
+
+			git checkout <target-branch>
+
+	2. Pull the Latest Changes (Optional)
+
+		Ensure your target branch is up to date:
+
+			git pull origin <target-branch>
+	3.Merge the Source Branch
+		Merge the branch with the changes you want into the current branch
+
+		git merge <source-branch>
+
+	4. Resolve Conflicts (if any)
+
+		If conflicts occur during the merge:
+
+		Open conflicting files, resolve the conflicts manually, and save the files
+		 git add.
+		 git commit  -m ""
+
+	5. Push the Changes
+		Push the updated target branch to the remote repository:
+
+		git push origin <target-branch>
+
+
 23. Rebase from one branch to another branch
+
+	What is Git Rebase
+		
+		Rebase is a Git operation that integrates changes from one branch into another by moving commits from the target branch and replaying them onto the source branch. This process creates a linear history by avoiding merge commits.
+
+		Suppose you have two branches:
+
+		main branch with commits: A → B → C
+		feature branch with commits: D → E
+
+		If you rebase feature onto main, Git moves D and E and applies them after C:
+
+		Before Rebase:
+		main:    A → B → C
+		feature: A → B → C → D → E
+
+		After Rebase:
+		main:    A → B → C
+		feature: A → B → C → D' → E'
+
+
+		Steps to Rebase Changes Between Branches
+		1.Switch to the Branch to Be Rebased
+			Check out the branch you want to update with changes from another branch:
+			git checkout <target-branch>
+		
+		2.Rebase onto the Source Branch
+			Use the git rebase command to apply changes from the source branch onto the current branch:
+			git rebase <source-branch>
+
+		3. Resolve Conflicts (if any)
+			Open the conflicting files and resolve them manually.
+
+			Mark conflicts as resolved:
+			git add .
+
+			Continue the rebase process
+
+			git rebase --continue
+		
+		4. Abort Rebase (if necessary)
+
+			If you encounter too many issues or decide not to proceed with the rebase:
+				git rebase --abort
+
+		5. Push the Rebased Branch (Force Push Required)
+
+			After rebasing, you need to push the updated branch to the remote repository using a force push:
+
+
+			git push origin <target-branch> --force
+
 24. Clone GIT repository with specific branch
+
+	When cloning a Git repository, you can directly specify a branch to clone using the --branch (or -b) option. This fetches the specified branch and checks it out, without fetching other branches unnecessarily.
+
+	git clone --branch <branch-name> <repository-url>
+
+
+	Steps to Clone a Repository with a Specific Branch
+
+		1. Identify the branch you want to clone.
+
+			Example: The branch name is feature.
+		
+		2.Run the clone command with the --branch option.
+			git clone --branch feature https://github.com/username/repo.git
+
+		3. Navigate to the cloned repository directory.
+
+			cd repo
+		4.verfy the branch 
+
+			git branch
+
+		git clone --branch dev https://github.com/example/project.git
+
+
 25. git Ignore
 
 		=> To ignore files or directories in Git, you need to use a special file called .gitignore. This file tells Git which files or patterns to ignore, meaning they won’t be tracked or shown in git status. Here’s a step-by-step guide:
@@ -1697,6 +2069,130 @@ git restore --staged <file>	Unstage without discarding change
 
 	9.git -c diff.ignoreSubmodules=all stash push
 		Ignore whitespace changes in stash
+16.Working with mutiple branch  
+
+			Initialize Repository:
+
+			Start with git init or clone an existing repository.
+			Create Branches:
+
+			Use git branch to create branches like dev, 6.0, 6.0.1, and 6.0.2.
+			Switch Between Branches:
+
+			Switch using git switch <branch-name> or git checkout <branch-name>.
+			Work on Branches:
+
+			Make changes and commit them within specific branches.
+			Merge Branches:
+
+			Merge feature or development branches into master for production.
+			Push to Remote:
+
+			Push branches with git push origin <branch-name>.
+			Track Remote Branches:
+
+			Set upstream branches and pull remote updates with git pull.
+			Delete Old Branches:
+
+			Remove branches locally (git branch -d) and remotely (git push origin --delete).
+			View History:
+
+			Use git log --oneline --graph --all to visualize branch history
+
+17. Create local GIT branch
+
+		Initialize or Navigate to Repository:
+
+		Clone an existing repository or initialize a new one.
+		Use git clone <repo-url> or git init.
+		Create a New Branch:
+
+		Use git branch <branch-name> to create a branch.
+		Alternatively, create and switch in one step with git switch -c <branch-name> (or git checkout -b <branch-name> for older Git versions).
+		Switch to the New Branch:
+
+		Use git switch <branch-name> or git checkout <branch-name>.
+		Verify Current Branch:
+
+		Run git branch to confirm you're on the correct branch.
+		Push the Branch to Remote (Optional):
+
+		Use git push origin <branch-name> to make the branch available to others.
+		This allows you to create, work on, and share a branch for your specific tasks or features.
+
+18. Push local GIT branch and make it remote branch
+
+		Check your current branch using git branch and switch if needed with git switch <branch-name>.
+		Push the local branch to the remote repository using:
+			
+			git push -u origin <branch-name>
+			The -u option sets up tracking between the local and remote branch.
+		
+		Verify the remote branch with git branch -r or check it on your remote repository platform.
+		
+		Collaborate: Team members can fetch and switch to the branch with git fetch and git switch <branch-name>.
+
+19. Move between GIT branches
+
+	Use git switch <branch-name> to move between branches.
+	Use git branch to list branches.
+	Create and switch with git switch -c <branch-name>.
+	Save uncommitted changes before switching using git stash or commit them.	
+	This ensures smooth navigation between branches while preserving your work.
+
+20. Cherry-pick objects from one branch to another branch
+
+	Cherry-picking allows you to apply specific commits from one branch to another without merging the entire branch.
+	Use git cherry-pick <commit-hash> to apply a commit.
+	Handle conflicts with git cherry-pick --continue.
+	Abort the process with git cherry-pick --abort.
+
+21. Continue cherry-pick and abort cherry-pick process
+
+	Continue Cherry-Pick: After resolving conflicts, stage the resolved files with git add <file> and resume the process using git cherry-pick --continue.
+	Abort Cherry-Pick: Use git cherry-pick --abort to cancel the cherry-pick and revert to the state before it started.
+	Both commands help manage the cherry-pick process effectively when conflicts arise.
+
+22. Merge changes from one branch to another branch
+	
+	Merging integrates changes from one branch (source-branch) into another (target-branch).
+	Steps:
+		Check out the target branch.
+		Pull the latest changes (optional).
+		Merge the source branch using git merge <source-branch>.
+		Resolve conflicts if necessary.
+		Push the updated branch to the remote repository.
+		Use git log to verify the merge history.
+
+23. Rebase from one branch to another branch
+
+		Rebasing integrates changes from one branch (source-branch) into another (target-branch) by reapplying commits on top of the source branch's commits.
+		Key steps:
+		
+		Check out the target branch.
+		Use git rebase <source-branch>.
+		
+		Resolve conflicts if they arise.
+		Push the rebased branch (requires --force due to rewritten history).
+		
+		Difference from Merge:
+		
+		Rebase creates a linear commit history by moving the branch’s commits on top of the source branch.
+		
+		Merge retains the full history and creates a merge commit.
+
+		To Update Your Branch: Keep your branch up to date with the latest changes from the base branch before merging.
+
+		To Clean Up History: Use an interactive rebase (git rebase -i) to squash or edit commits for a cleaner commit history.
+		
+		Avoid Merge Commits: Maintain a linear project history by avoiding merge commits.
+
+24. Clone GIT repository with specific branch
+	
+		Purpose: Use --branch to clone only a specific branch instead of the entire repository with all branches.
+		Command: git clone --branch <branch-name> <repository-url>
+		Example: git clone --branch feature https://github.com/username/repo.git
+		Optional: Add --depth 1 for a shallow clone to save bandwidth and time.
 
 25. Summary git ignore 
 
