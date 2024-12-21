@@ -25,7 +25,7 @@ Topics to study
 
 			git init
 
-				-This command creates a .git folder in your project's root directory. This folder contains all the necessary metadata and object files that Git needs to track changes in your project.
+				-This command creates a .git folder in your project's root directory. This folder contains all the necessary metadata and object files that Git needs to track changes in your project. b n
 
 		Step 3: Add Files to the Repository
 
