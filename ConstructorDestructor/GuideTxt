@@ -1,0 +1,13 @@
+1 .PHP allows you to declare a constructor method for a class with the name __construct()
+
+
+	class ClassName
+	{
+		function __construct()
+		{
+			// implementation
+		}
+	}
+
+
+2. When you create an instance of the class, PHP automatically calls the constructor
