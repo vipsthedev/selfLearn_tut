@@ -1755,7 +1755,7 @@ The git log command in Git is highly customizable and allows you to view commit 
 2. https://www.freecodecamp.org/news/learn-the-basics-of-git-in-under-10-minutes-da548267cc91/
 3. https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet
 4.http://internal-docs.fads6.fiareads.com/index.php?id=91
-
+https://chatgpt.com/c/671c9c06-7844-800b-9766-ff0d0198bcd3
 youtube
 	https://youtu.be/6El8Ia4fYDc?si=3hi-9eLFqPk-6woJ
 	https://youtu.be/cFViH1UnU6M?si=IY0yA4FBRpCbFdPg
