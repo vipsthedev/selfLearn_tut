@@ -1,0 +1,27 @@
+Introduction to the PHP abstract class
+
+	- An abstract class is a class that cannot be instantiated. Typically, an abstract defines an interface for other classes to extend.
+
+	- To define an abstract class, you add the abstract keyword as follows:
+
+		abstract class className
+		{
+		   // ...
+		}
+
+
+	- An abstract class can have properties and methods as a regular class. But it cannot be instantiated.	
+
+	- Similar to an abstract class, an abstract method is a method that does not have an implementation. To define an abstract method, you also use the abstract keyword before the method signature like this
+
+
+		abstract function methodName(arguments);
+
+	-  In most cases, an abstract class will contain at least one abstract method though it is not required. If a class contains one or more abstract methods, it must be an abstract class.
+
+
+
+	- An abstract class cannot be instantiated. It provides an interface for other classes to extend.
+
+	- An abstract method doesn’t have an implementation. If a class contains one or more abstract methods, it must be an abstract class.
+	- A class that extends an abstract class needs to implement the abstract methods of the abstract class.
