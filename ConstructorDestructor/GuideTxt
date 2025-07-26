@@ -1,13 +1,62 @@
-1 .PHP allows you to declare a constructor method for a class with the name __construct()
+Constructor
 
 
-	class ClassName
-	{
-		function __construct()
+	1 .PHP allows you to declare a constructor method for a class with the name __construct()
+
+
+		class ClassName
 		{
-			// implementation
+			function __construct()
+			{
+				// implementation
+			}
 		}
-	}
 
 
-2. When you create an instance of the class, PHP automatically calls the constructor
+	2. When you create an instance of the class, PHP automatically calls the constructor
+
+
+		$object = new ClassName()
+
+	3. Typically, you use the constructor to initialize the properties of the object.
+
+
+
+	PHP constructor promotion 
+
+	1.In practice, you often need to assign the constructor arguments to corresponding properties. It’s kind of redundant.
+
+
+
+		class BankAccount
+		{
+			function __construct( private $accountNumber, private $balance)
+			{	
+			}
+		}
+
+
+
+	PHP constructor is a special method that is called automatically when an object is created.
+	Do use constructor promotion as much as possible to make the code shorter.
+
+Destructor
+
+	
+
+	1. PHP destructor and use it to clean up the resources when the object is deleted.
+
+	2. special method __destruct() like this:
+
+
+		<?php
+
+			class className
+			{
+				public function __destruct()
+				{
+					//...
+				}
+			}
+
+	3. The destructor is automatically invoked before an object is deleted.
