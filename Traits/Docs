@@ -1,0 +1,121 @@
+Introduction to PHP traits
+
+	- Code reuse is one of the most important aspects of object-oriented programming.
+	- Traits allow you to reuse various methods freely in many different classes that do not need to be in the same class hierarchy.
+	- Inheritance allows classes to reuse the code vertically while the traits allow classes reuse the code horizontally.
+
+	- To use a trait in a class, you use the use keyword. All the trait’s methods are available in the class where it is used.
+
+
+	trait Logger
+	{
+		public function log($msg)
+		{
+			echo '<pre>';
+			echo date('Y-m-d h:i:s') . ':' . '(' . __CLASS__ . ') ' . $msg . '<br/>';
+			echo '</pre>';
+		}
+	}
+
+
+	class BankAccount
+	{
+		use Logger;
+
+		private $accountNumber;
+
+		public function __construct($accountNumber)
+		{
+			$this->accountNumber = $accountNumber;
+			$this->log("A new $accountNumber bank account created");
+		}
+	}
+
+
+	Using multiple traits
+
+		-
+
+		trait Logger
+	{
+		public function log($msg)
+		{
+			echo '<pre>';
+			echo date('Y-m-d h:i:s') . ':' . '(' . __CLASS__ . ') ' . $msg . '<br/>';
+			echo '</pre>';
+		}
+	}
+		trait Logger1
+	{
+		public function log($msg)
+		{
+			echo '<pre>';
+			echo date('Y-m-d h:i:s') . ':' . '(' . __CLASS__ . ') ' . $msg . '<br/>';
+			echo '</pre>';
+		}
+	}
+
+
+	class BankAccount
+	{
+		use Logger,Logger1;
+
+		private $accountNumber;
+
+		public function __construct($accountNumber)
+		{
+			$this->accountNumber = $accountNumber;
+			$this->log("A new $accountNumber bank account created");
+		}
+	}
+
+
+
+	Composing multiple traits
+
+		PHP allows you to compose multiple traits into a trait by using the use statement in the trait’s declaration. For example:	
+
+
+	trait Logger
+	{
+		public function log($msg)
+		{
+			echo '<pre>';
+			echo date('Y-m-d h:i:s') . ':' . '(' . __CLASS__ . ') ' . $msg . '<br/>';
+			echo '</pre>';
+		}
+	}
+	trait Logger1
+	{
+		public function log($msg)
+		{
+			echo '<pre>';
+			echo date('Y-m-d h:i:s') . ':' . '(' . __CLASS__ . ') ' . $msg . '<br/>';
+			echo '</pre>';
+		}
+	}
+
+	trait LoggerMain
+	{
+		use Logger,Logger1;
+		public function log($msg)
+		{
+			echo '<pre>';
+			echo date('Y-m-d h:i:s') . ':' . '(' . __CLASS__ . ') ' . $msg . '<br/>';
+			echo '</pre>';
+		}
+	}
+
+
+	class BankAccount
+	{
+		use LoggerMain;
+
+		private $accountNumber;
+
+		public function __construct($accountNumber)
+		{
+			$this->accountNumber = $accountNumber;
+			$this->log("A new $accountNumber bank account created");
+		}
+	}
