@@ -1,7 +1,7 @@
 PHP Inheritance
   
 
-  Inheritance allows a class to reuse the code from another class without duplicating it.
+  1) Inheritance allows a class to reuse the code from another class without duplicating it.
 
 
   In inheritance, you have a parent class with properties and methods, and a child class can use the code from the parent class.
@@ -39,7 +39,7 @@ PHP Inheritance
 
 
 
-	A child class can reuse properties and methods from the parent class. But the parent class cannot use properties and methods from the child class.
+	2) A child class can reuse properties and methods from the parent class. But the parent class cannot use properties and methods from the child class.
 
 
 	Add properties and methods to the child class
@@ -79,5 +79,91 @@ PHP Inheritance
 
 			To call the constructor of the parent class from the constructor of the child class, you use the parent::__construct(arguments) syntax.
 
+	3) Introduction to the PHP overriding method 
 
-		
+
+
+			- Method overriding allows a child class to provide a specific implementation of a method already provided by its parent class.
+
+			- To override a method, you redefine that method in the child class with the same name, parameters, and return type.
+
+			- The method in the parent class is called overridden method, while the method in the child class is known as the overriding 	method.  	
+			-
+				- If an object of the parent class invokes the method, PHP will execute the overridden method.
+				- But if an object of the child class invokes the method, PHP will execute the overriding method.
+
+
+			- Sometimes, you want to completely replace the method’s behavior of the parent class with a new one. In this case, you need to override the method of the parent class.
+
+			-To override a method, you redefine the method in the parent class again in the child class but use a different logic.
+
+
+			Example
+
+				class Robot
+				{
+					public function greet()
+					{
+						return 'Hello!';
+					}
+				}
+
+				class Android extends Robot
+				{
+					public function greet()
+					{
+						return 'Hi';
+					}
+				}
+
+
+				How it works
+
+					First, invoke the greet() method of an instance of the Robot class, the greet() method in the Robot class executes.
+					Second, call the greet() method of an instance of the Android class, the greet() method in the Android class executes.
+
+
+				If you call the method of the parent class in the method in the child class, you cannot use $this keyword like this:
+
+						$greeting = parent::greet();
+
+
+		4) The final method #
+
+				To prevent the method in the child class from overriding the method in the parent class, you can prefix the method with the final keyword:
+
+
+
+
+				Method overriding allows a child class to define a method that overrides (or replaces) the method already provided by its parent class.
+
+				Use parent:: to call the overridden method in the overriding method.
+
+				Use the final method when you don’t want a child class’s method to override a parent class’s method.
+
+
+
+================
+
+	Protected
+
+		 You will learn how to use the PHP protected access modifier to allow child classes to access properties and methods of the parent class.
+
+
+
+		 	The protected properties and methods can be accessed from the inside of the class and any class that extends the class.
+
+
+
+		 	USE 
+
+			 	protected $propertyName;
+
+			 	protected function methodName() 
+				{
+
+				   //...
+				}
+
+
+				Use protected properties and methods can only be accessed within the class and in any child classes of the class.
