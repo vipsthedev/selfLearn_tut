@@ -1,0 +1,60 @@
+PHP Typed Properties
+
+	PHP 7.4 allows you to type hints the class properties with any types except void and callable.
+
+
+	Example
+
+	class BankAccount
+	{
+	    public float $balance;
+	}
+
+	Typed properties and strict types 
+
+
+	Typed
+	 the constructor of the BankAccount expects a float. However, you can pass a string. In this case, PHP coerces the string to a float:
+
+
+	 strict
+
+	 If you don’t want this behavior, you can disable it by declaring strict_types at the beginning of the file as follows:
+
+
+
+
+
+	Typed properties include modifiers (private, protected, and public) and types (except void and callable).
+	Typed properties have uninitialized states, not null like untyped properties.
+	=====================
+
+
+PHP Readonly Properties
+
+	Introduction to the PHP readonly properties 
+		PHP 8.1 introduced the readonly class properties. The readonly properties allow you to define properties that can be only initialized once within the class.
+
+
+	To define a readonly property, you use the readonly keyword in a typed
+
+		class MyClass
+		{
+		    private readonly type propertyName;
+		}
+
+		Example	
+
+			public readonly string $username;
+		or 
+
+		class MyClass
+		{
+		    public function __construct(private readonly type propertyName)
+		    {
+		    }
+		}
+
+
+	A readonly property can be initialized once from within the class.
+		Use the readonly keyword in a typed property to make the property readonly.
