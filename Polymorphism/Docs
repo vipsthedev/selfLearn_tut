@@ -1,0 +1,41 @@
+What is polymorphism?
+
+	- And you’ll also learn how to implement polymorphism in PHP using abstract classes or interfaces
+	- Polymorphism is a Greek word that literally means many forms. In object-oriented programming, polymorphism is closely related to inheritance.
+	- To implement polymorphism in PHP, you can use either abstract classes or interfaces.
+
+
+
+	PHP polymorphism using an abstract class
+
+	- Due to the specific implementation of the greet() method in each class, these objects return different greeting messages.
+
+
+		abstract class Person
+			{
+				abstract public function greet();
+			}
+
+
+		class French extends Person
+		{
+			public function greet()
+			{
+				return 'Bonjour!';
+			}
+		}
+	PHP polymorphism using an interface
+
+		-
+		interface Greeting
+		{
+			public function greet();
+		}
+
+		class English implements Greeting
+		{
+			public function greet()
+			{
+				return 'Hello!';
+			}
+		}
