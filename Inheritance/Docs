@@ -1,0 +1,83 @@
+PHP Inheritance
+  
+
+  Inheritance allows a class to reuse the code from another class without duplicating it.
+
+
+  In inheritance, you have a parent class with properties and methods, and a child class can use the code from the parent class.
+
+
+  Inheritance allows you to write the code in the parent class and use it in both parent and child classes.
+
+   The parent class is also called a base class or super class. And the child class is also known as a derived class or a subclass.
+
+   To define a class inherits from another class, you use the extends keyword.
+
+
+   Example
+
+   	class BankAccount	
+	{
+		public deposit(){
+
+		}
+	}
+
+	class SavingAccount extends BankAccount
+	{
+	}
+
+
+	In this example, the SavingAccount can reuse all the non-private properties and methods from the BankAccount class.
+
+
+
+	$account = new SavingAccount();
+	$account->deposit(100);
+	echo $account->getBalance();
+
+
+
+
+	A child class can reuse properties and methods from the parent class. But the parent class cannot use properties and methods from the child class.
+
+
+	Add properties and methods to the child class
+
+
+		A child class can have its own properties and methods. 
+
+
+
+		===
+
+
+		Inheritance allows a class to reuse the code of another class without duplicating it.
+		
+		Use the extends keyword to define one class that inherits from another class.
+		
+		A class that inherits another class is called a subclass, a child class, or a derived class. The class from which the subclass 
+		inherits is a parent class, a superclass, or a base class.
+		
+		A subclass can have its own properties and methods.
+		
+		Use $this keyword to call the methods of the parent class from methods in the child class.
+
+
+
+
+
+
+		====
+
+
+		How to Call the Parent Constructor
+
+			
+			 you’ll learn how to call the parent constructor from the constructor of the child class.
+
+
+			To call the constructor of the parent class from the constructor of the child class, you use the parent::__construct(arguments) syntax.
+
+
+		
