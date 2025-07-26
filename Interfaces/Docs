@@ -1,0 +1,39 @@
+Introduction to the PHP interface 
+
+
+    - you will learn about the PHP interface and how to use an interface to define a contract between classes.  
+    - An interface allows you to specify a contract that a class must implement. To define an interface, you use the interface
+
+
+
+
+            interface MyInterface
+            {
+                //...
+            }
+
+            interface MyInterface
+            {
+                const CONSTANT_NAME = 1;
+
+                public function methodName();
+            }
+
+    - for interfaces, we say that a class implements an interface. 
+    - A class can inherit from one class only. Howeer, it can implement multiple interfaces.
+    - When a class implements an interface, it’s called a concrete class. The concrete class needs to implement all the methods of the interface.
+
+
+
+    Why should you use PHP interfaces? #
+
+
+        - By implementing an interface, the object’s caller needs to care only about the object’s interface, not implementations of the  object’s methods. Therefore you can change the implementations without affecting the caller of the interface.
+
+        - An interface allows unrelated classes to implement the same set of methods, regardless of their positions in the class inheritance hierarchy.
+
+        - An interface enables you to model multiple inheritances because a class can implement more than one interface.
+
+
+
+         PHP interface provides a contract for other classes to follow (or implement).
