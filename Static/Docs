@@ -1,0 +1,27 @@
+PHP Static Methods and Properties
+	
+	- you will learn about PHP static methods and static properties and understand the differences between the  $this and self.
+	- PHP allows you to access the methods and properties in the context of a class rather than an object. Such methods and properties are class methods and properties.
+
+	- Class methods and class properties are called static methods and properties.
+
+
+	Static methods 
+		
+		- To define a static method, you place the static keyword in front of the function keyword 
+
+		Example
+
+		class MyClass
+			{
+				public static function staticMethod()
+				{
+				}
+			}
+	- The self variable means the current class.
+
+		self::staticMethod(arguments);
+
+	- out side of class
+
+		className::staticMethod(arguments)

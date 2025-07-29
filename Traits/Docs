@@ -119,3 +119,23 @@ Introduction to PHP traits
 			$this->log("A new $accountNumber bank account created");
 		}
 	}
+
+
+
+	Aliasing trait method #
+
+
+	- aliases for the same method name of multiple traits, you can reuse all the methods in those traits.
+
+
+	class Logger
+		{
+			use FileLogger, DatabaseLogger{
+				DatabaseLogger::log as logToDatabase;
+				FileLogger::log insteadof DatabaseLogger;
+			}
+		}
+
+		$logger = new Logger();
+		$logger->log('this is a test message #1');
+		$logger->logToDatabase('this is a test message #2');

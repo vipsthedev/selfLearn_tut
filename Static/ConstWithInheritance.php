@@ -1,0 +1,24 @@
+<?php
+
+abstract class Model
+{
+    protected const TABLE_NAME = '';
+
+    public static function all()
+    {
+        return 'SELECT * FROM ' . static::TABLE_NAME;
+    }
+}
+
+class User extends Model
+{
+    protected const TABLE_NAME = 'users';
+}
+
+class Role extends Model
+{
+    protected const TABLE_NAME = 'roles';
+}
+
+echo User::all() . '<br>'; // SELECT * FROM users;
+echo Role::all() . '<br>'; // SELECT * FROM roles;
