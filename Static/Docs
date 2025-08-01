@@ -25,3 +25,72 @@ PHP Static Methods and Properties
 	- out side of class
 
 		className::staticMethod(arguments)
+
+	Static properties 
+
+		To define a static property, you also use the static keyword:
+
+
+
+		public static $staticProperty;
+
+
+
+		MyClass::$staticProperty;
+
+
+
+		Like the static methods, to access static properties from within the class, you use the self instead of  $this as follows:
+
+				self::staticProperty
+
+
+		Static methods and properties are bound to a class, not individual objects of the class.
+		Use the static keyword to define static methods and properties.
+		Use the self keyword to access static methods and properties within the class.	
+
+-================
+
+Introduction to the PHP class constants #
+
+	- Sometimes, you need to define a constant that is specific to a class. In this case, you can use the PHP class constants.
+
+
+		class Circle
+		{
+		    const PI = M_PI;
+		}
+
+	- Since a constant is defined per class, not per instance of the class, you use the self keyword to reference the constant inside the class
+
+	-  you can use visibility modifier keywords such as private, protected, and public with the class constant. For example:
+
+
+	class Circle
+	{
+	    private const PI = M_PI;
+
+	    // other methods   
+	}
+
+
+	====
+	PHP class constants and inheritance
+
+
+
+	The following example illustrates how to define a constant in the parent class and override it in the child class.
+
+
+
+
+		Use the const keyword to define a class constant.
+		Use the visibility modifier keywords, including public, protected, and private. By default, a class constant is public.
+
+
+
+
+	Late Static Binding
+
+		-
+		Instead of using the self, you use the static keyword that references an exact class that is called at runtime.
