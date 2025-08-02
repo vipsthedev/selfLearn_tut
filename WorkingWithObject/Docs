@@ -1,0 +1,168 @@
+PHP serialize
+
+	the PHP serialize() function 
+
+		To serialize an object into a string, you use the serialize() function:
+
+			serialize(mixed $value): string
+
+	The serialize() function returns a string that contains a byte-stream representation of the object.
+
+		serialize(mixed $value): string
+
+		The serialize() function returns a string that contains a byte-stream representation of the object
+
+
+	Notice that the serialize() function only serializes the properties of the object, not the method.
+
+
+
+The __sleep() magic method #
+
+
+	The __sleep() method returns an array that contains property names that will be serialized.
+
+The __serialize()
+
+	
+	The __serialize() method is similar to the __sleep() method:
+
+However, the __serialize() method returns an associative array of key/value pairs representing the object’s serialized form
+
+
+	Use the serialize() function to serialize an object into a string of byte-stream representation.
+
+	Use the __sleep() or __serialize() method to implement the logic before serialization.
+
+
+Php unserialize
+
+	
+	 how to use the PHP unserialize() function to convert a serialized string into an object.
+
+
+	 If the unserialize() function cannot convert the serialized string ($data) into an object, it returns false with an E_NOTICE.
+
+
+
+	 The __unserialize() magic method
+
+	  public function __unserialize(): void
+    {
+        $this->open();
+    }
+
+
+    The __wakeup() magic method
+
+
+    Similar to the __unserialize() method, the unserialize() function also checks for the existence of the __wakeup() method of the unserialized object.
+
+
+    the __wakeup() method to reconstruct the state that the object may have.
+
+
+
+    In practice, you can perform reinitialization tasks in the __wakeup() method, such as reopening the file or re-connecting to the database.
+
+
+
+
+    Use the unserialize() method to convert a serialized string into an object.
+	The unserialize() method calls the __unserialize() or __wakeup() method of the object to perform re-initialization tasks.
+	The unserialize() method calls the __unserialize() method only if an object has both __unserialize() and __wakeup() methods.
+
+
+=>Clone Object
+
+	
+	To clone an object is to create a copy of an object. The clone keyword allows you to perform a shallow copy of an object
+
+
+
+	__clone() magic method, you can perform a deep copy of an object.
+
+
+
+	Copying object via assignment
+
+
+
+		$bob = new Person('Bob');
+		// assign bob to alex and change the name
+		$alex = $bob;
+
+
+		$alex->name = 'Alex';
+
+	Copying object using the clone keyword
+
+
+
+	The clone keyword creates a copy of the Person object. There are two objects in the memory.
+
+
+	 __clone magic method
+
+
+	 	function __clone ( ) : void
+
+	->Shallow copy
+
+		As mentioned ealier, the clone performs a shallow copy of an object. It means that:
+
+		Create a copy of all properties of an object.
+			If a property references another object, the property remains a reference.
+
+	-> Deep copy with __clone method
+
+		Deep copy creates a copy of an object and recursively creates a copy of the objects referenced by the properties of the object.
+
+
+		__clone() method automatically after cloning an object, you can clone the objects referenced by the properties of the class.
+
+
+=============
+
+		Compare Objects
+
+			 compare objects in PHP using the comparison operator ( ==) and identity operator (===).
+
+				 Objects are the same instance or different instances of a class
+				 Object’s properties and their values.
+
+=>Anonymous Class
+
+	PHP anonymous classes
+
+		An anonymous class is a class without a declared name.
+
+
+		<?php
+
+		$myObject = new class {
+		    // ...
+		};
+
+		in this syntax, you place the class keyword after the new keyword. The $myObject is the instance of the anonymous class.
+
+		Example,
+
+		$logger = new class {
+			    public function log(string $message): void
+			    {
+			        echo $message . '<br>';
+			    }
+			};
+
+			$logger->log('Hello');
+			Code language: PHP (php)
+
+		-> Internally, PHP generates a name for the anonymous class. To get the generated name, you can use the get_class() 
+
+	->Implementing an interface
+
+		An anonymous can implement one or multiple interfaces
+
+
+	An anonymous class is a class without a declared name.
