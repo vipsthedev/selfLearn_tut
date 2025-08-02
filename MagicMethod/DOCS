@@ -1,0 +1,176 @@
+PHP magic methods 
+
+	- PHP magic methods are special methods in a class. The magic methods override the default actions when the object performs the actions
+
+	- By convention, the names of magic methods start with a double underscore (__)
+
+	- PHP reserves the methods whose names start with a double underscore (__) for magic methods.
+
+	- you have learned that the constructor and destructor use the __construct() and __destruct() methods
+
+
+	The __construct() method is invoked automatically when an object is created and the __destruct() is called when the object is deleted.
+
+		- __call()
+
+			is triggered when invoking an inaccessible instance method
+		
+		- __callStatic()
+
+			is triggered when invoking an inaccessible static method
+		
+		- __get()
+
+				is invoked when reading the value from a non-existing or inaccessible property
+
+		-  __set()
+
+				is invoked when writing a value to a non-existing or inaccessible property
+
+
+					PHP calls the __set() method implictily and adds these properties to the $attribute property.
+
+
+		-  __isset()
+
+				is triggered by calling isset() or empty() on a non-existing or inaccessible property
+		
+		- __unset()
+
+				is invoked when unset() is used on a non-existing or inaccessible property.
+
+		- __sleep()
+
+				The __sleep() commits the pending data
+
+		- __wakeup()
+
+				is invoked when the unserialize() runs to reconstruct any resource that an object may have
+
+		- __serialize()
+
+				The serialize() calls __serialize(), if available, and construct and return an associative array of key/value pairs that represent the serialized form of the object.
+		
+		- __unserialize()	
+
+			The unserialize() calls __unserialize(), if avaialble, and restore the properties of the object from the array returned by the __unserialize() method. 
+
+		- __toString()
+
+			is invoked when an object of a class is treated as a string.
+
+		- __invoke()
+
+			is invoked when an object is called as a function
+
+		- __set_state()
+
+				is called for a class exported by var_export()
+	
+		- __clone()
+
+			is called once the cloning is complete
+
+		- __debugInfo()	
+
+				is called by var_dump() when dumping an object to get the properties that should be shown.
+
+
+---------------
+
+--set()
+
+	
+	Public __set ( string $name , mixed $value ) : void
+
+
+
+		public function __construct($tag)
+		{
+			$this->tag = $tag;
+		}
+
+		public function __set($name, $value)
+		{
+			$this->attributes[$name] = $value;
+		}
+
+
+
+		acess
+
+
+		$div = new HtmlElement('div');
+
+		$div->id = 'page';
+		$div->class = 'light';
+
+		echo $div->html('Hello');
+
+
+		id=>name 
+		class= values
+
+
+	==================
+
+	PHP __get() method
+
+
+		The __get() method accepts one argument which is the name of the property that you want to access:
+
+		When you attempt to access a property that doesn’t exist or a property that is in-accessible e.g., private or protected property, PHP automatically calls the __get() method.
+
+
+
+		public __get ( string $name ) : mixed
+
+
+--
+
+PHP Magic methods start with double underscores (__).
+PHP calls the __get() method automatically when you access a non-existing or inaccessible property.
+PHP calls the __set() method automatically when you assign a value to a non-existing or inaccessible property.
+
+
+
+=> PHP __toString
+
+	The __toString() is one of a magic method in PHP. The following shows the syntax of the __toString() 
+
+
+	public function __toString ( ) : string
+
+
+=> PHP __call
+
+	
+	When you call a method of an object, if the method does not exist or is private, PHP will call the __call() method automatically.
+
+		public __call ( string $name , array $arguments ) : mixed
+
+
+	The __call() method accepts two arguments:
+
+		$name is the name of the method that you call on the object.
+		$arguments is an array of arguments you pass to to the method call
+
+	The __call() method is invoked automatically when a nonexisting method or an inaccessible method is called.
+	Use the __call() method to wrap existing API into a class.
+
+
+=> PHP __callStatic() magic method
+
+	
+	PHP invokes the __callStatic() method when you invoke an inaccessible static method of a class.
+
+	The __callStatic() magic method is called automatically when an inaccessible method is invoked
+
+
+=> PHP __invoke
+	
+		PHP will call the __invoke() magic method when you call an object as a function.
+
+		Use the __invoke() magic method is invoked when you call an object as a function.
+		An object of a class that implements the __invoke() is known as a function object or functor. It’s also a callable.
+

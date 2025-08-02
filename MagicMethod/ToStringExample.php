@@ -1,0 +1,27 @@
+<?php
+//if we use int values 
+declare(strict_types=0);
+
+class BankAccount
+{
+	private $accountNumber;
+
+	private $balance;
+
+	public function __construct(
+		$accountNumber,
+		$balance
+	) {
+		$this->accountNumber = $accountNumber;
+		$this->balance = $balance;
+	}
+
+	public function __toString()
+	{
+		return "Bank Account: $this->accountNumber. Balance: $$this->balance";
+	}
+}
+
+$account = new BankAccount('123456789', 100);
+// print_r($account);
+echo $account;
