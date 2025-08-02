@@ -57,4 +57,8 @@ Set an Exception Handler – show you how to use the set_exception_handler funct
 Section 15. Class / Object Functions 
 class_exists – return true if a class exists
 method_exists – return true if an object or a class has a specific method.
-property_exists – return true if an object or a class has a specific property
+property_exists – return true if an object or a class has a specific 
+
+
+
+https://www.php-fig.org/psr/psr-1/

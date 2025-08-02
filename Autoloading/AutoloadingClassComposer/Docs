@@ -1,0 +1,36 @@
+Autoloading Class Files
+
+	-> organize your class files and load them automatically using PHP  spl_autoload_register() function.
+	-> PHP 7.2.0 deprecated the __autoload() magic function and recommended to use the spl_autoload_register() function instead.
+	-> When you use a class that has not been loaded, PHP will automatically look for spl_autoload_register() function call.
+	-> The spl_autoload_register() function accepts a callback function and calls it when you attempt to create use a class that has not been loaded.
+
+
+	An autoloading function loads a class, an interface, or a trait from a PHP file.
+	Use the spl_autoload_register() function to autoload the classes, interfaces, and traits.
+
+
+Composer Autoload
+
+
+	 use Composer to autoload PHP classes from files using PSR-4 standard.
+
+
+Introduction to the Composer
+
+	
+		- Composer is a dependency manager for PHP
+
+		- Composer allows you to manage dependencies in your PHP project. 
+
+
+Composer autoload with PSR-4
+
+
+PSR stands for PHP Standard Recommendation. PSR is a PHP specification published by the PHP Framework Interop Group or PHP-FIG.
+
+
+
+Composer is a dependency management tool in PHP.
+Use PSR-4 for organizing directory and class files.
+Use the composer dump-autoload command to generate the autoload.php file.
