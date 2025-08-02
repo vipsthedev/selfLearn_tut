@@ -1,0 +1,50 @@
+class_exists
+
+	- class_exists() function to check if a class exists or not.
+	- The class_exists() function accepts a class name and returns true if the class exists or false otherwise.
+
+		class_exists(string $class, bool $autoload = true): bool
+
+
+
+		The class_exists() function has two parameters:
+
+		$class specifies the name of the class to check.
+		$autoload determines whether to call spl_autoload_register() by default.
+
+
+Using the PHP class_exists() with spl_autoload_register() example #
+
+	
+	First, the class_exists() function checks whether the App\User class exists and call the spl_autoload_register() function to load the User.php file from the app folder.
+
+
+=========
+PHP method_exists
+
+	
+	-  method_exists() function to check if a class or an object of a class has a specified method.
+
+	The method_exists() has two parameters:
+
+		$object_or_class is an object or a class in which you want to check if a method exists.
+		$method is a string that represents the method to check.
+
+====================
+property_exists
+
+	-  use the property_exists() function to check if the object or class has a property.
+	- The property_exists() function returns true if an object or a class has a property. Otherwise, it returns false.
+
+		property_exists(object|string $object_or_class, string $property): bool
+Code language: PHP (php)
+
+
+	The property_exists() method has two parameters:
+
+		The $object_or_class specifies the object or class that needs to check for the existence of a property.
+		The $property specifies the name of the property to check.
+
+
+
+Use the PHP property_exists() function to check if an object or a class has a specific property.
