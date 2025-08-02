@@ -1,0 +1,135 @@
+PHP try…catch
+	
+	-you will learn how to use the PHP try...catch statement to handle exceptions.
+
+	- In programming, unexpected errors are called exceptions. Exceptions can be attempting to read a file that doesn’t exist or connecting to the database server that is currently down.
+
+	- To handle the exceptions, you use the try...catch statement. Here’s a typical syntax of the try...catch statement:
+
+	Example
+
+		try {
+			// perform some task
+		} catch (Exception $ex) {
+			// jump to this part
+			// if an exception occurred
+		}
+
+	-In the try block, you do some tasks e.g.,reading a file. If an exception occurs, the execution jumps to the catch block.
+
+	-In the catch block, you specify the exception name and the code to handle a specific exception
+
+	- The exception variable $ex is an instance of the Exception class that contains the detailed information of the error. I
+
+
+	-> Multiple catch blocks
+
+
+		A try...catch statement can have multiple catch blocks. Each catch block will handle a specific exception:
+
+
+		<?php
+
+			try {
+				//code...
+			} catch (Exception1 $ex1) {
+				// handle exception 1
+			} catch (Exception2 $ex2) {
+				// handle exception 2
+			} catch (Exception1 $ex3) {
+				// handle exception 3
+			}
+
+	Use the try...catch statement to handle exceptions.
+	The try...catch statement separates the program logic and exception handlers.
+	Use multiple catch blocks to handle multiple exceptions. Place the most specific exception first and the least specific exception after.
+	Specify a list of pipe-separated exceptions in a single catch block if the same code can handle multiple exceptions.
+	Ignore the exception variable when you don’t want to access the detail of the exception.
+
+
+===============
+
+PHP try…catch…finally
+
+
+	- The try…catch statement allows you to handle exceptions. When an exception occurs in the try block, the execution jumps to the catch block. In the catch block, you can place the code that handles the exception.
+	
+	- To ensure that the file will be closed properly regardless of whatever exception occurs or not, you can close the file in the finally block like this:
+
+	- The finally is an optional block of the try…catch statement. The finally block always executes after the try or catch block.
+
+ 	- The syntax of the try...catch...finally block is as follows
+
+
+ 	try {
+	// do something
+	} catch (Exception $e) {
+		// code to handle exception
+	} finally {
+		// code to clean up the resource
+	}
+
+	PHP finally & return 
+
+		-When you use the return statement with the try...catch...finally statement, the finally block still executes after the return statement.
+
+]
+	The try…finally statement
+
+		
+
+		Use the try...catch...finally statement to handle exceptions and clean up the resources.
+		The finally block always executes after the try or catch block.
+		If the try or catch has the return statement, the value will be returned only after the finally block executes.
+
+	
+=>	throw Exception
+
+	- learn about the Exception class in detail and how to throw a new exception in PHP.
+	- An exception is an instance of the Exception class. Like other PHP objects, you use the new keyword to create an instance of the Exception class.
+
+	- An Exception object has two main properties: a message and a numeric code. The message describes the exception. The numeric code is optional, which specifies the context for a specific exception.
+
+
+	Example
+
+		$exception = new Exception('Invalid username or password', 100);
+
+			-the throw statement accepts an instance of the Exception class or the subclass of the Exception class. I
+
+			- Note that the Exception class also implements the Throwable interface.
+
+
+PHP built-in exception classes 
+
+	- The standard PHP library (SPL) provides many subclasses of the Exception class. For example, you can use the InvalidArgumentException
+
+		Exception
+   ClosedGeneratorException
+   DOMException
+   ErrorException
+   IntlException
+
+
+    An exception is an instance of the Exception class that implements the Throwable interface.
+	
+	Use the throw statement to raise an exception. The throw statement accepts an exception object that implements the Throwable interface.
+
+
+
+	==>PHP Set Exception Handler
+
+		how to set an exception handler using the PHP set_exception_handler() function.
+
+		- The global exception handler allows you to show a user-friendly message to the users while logging the important information into a log file for troubleshooting later.
+
+		- The set_exception_handler() function accepts a callable where you can place the code to handle the uncaught exceptions. For example
+
+		Example
+
+		set_exception_handler(function ($ex) {
+			// handle the uncaught exception
+		});
+
+
+		Use the set_exception_handler() function to register a global exception handler that handles uncaught exceptions.

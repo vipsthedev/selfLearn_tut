@@ -1,0 +1,93 @@
+Autoloading Class Files
+
+	-> organize your class files and load them automatically using PHP  spl_autoload_register() function.
+	-> PHP 7.2.0 deprecated the __autoload() magic function and recommended to use the spl_autoload_register() function instead.
+	-> When you use a class that has not been loaded, PHP will automatically look for spl_autoload_register() function call.
+	-> The spl_autoload_register() function accepts a callback function and calls it when you attempt to create use a class that has not been loaded.
+
+
+	An autoloading function loads a class, an interface, or a trait from a PHP file.
+	Use the spl_autoload_register() function to autoload the classes, interfaces, and traits.
+
+
+Composer Autoload
+
+
+	 use Composer to autoload PHP classes from files using PSR-4 standard.
+
+
+Introduction to the Composer
+
+	
+		- Composer is a dependency manager for PHP
+
+		- Composer allows you to manage dependencies in your PHP project. 
+		- Before using Composer, you need to download and install it
+		- To check whether the Composer installed successfully
+		 composer -v
+
+Autoloading classes with Composer
+
+	Back the the previous example, to use the Composer, you first create a new file called composer.json under the project’s root folder. The project directory will look like this:
+
+	├── app
+│   ├── bootstrap.php
+│   └── models
+│       └── User.php
+├── composer.json
+└── index.php
+
+
+	In the composer.json, you add the following code:
+
+		{
+		    "autoload": {
+		        "classmap": ["app/models"]
+		    }
+		}
+
+
+
+		This code means that Composer will autoload all class files defined the app/models folder.
+
+
+
+		If you have classes from other folders that you want to load, you can specify them in classmap array
+
+
+		{
+	        "autoload": {
+	            "classmap": ["app/models", "app/services"]
+	        }
+    	}
+
+    	In this example, Composer will load classes from both models and services folders under the app folder.
+
+    	Then, type the following command from the project directory:
+
+			composer dump-autoload
+
+
+
+		Composer will generate a directory called vendor that contains a number of files like this:
+
+.
+		├── app
+		│   ├── bootstrap.php
+		│   └── models
+		│       └── User.php
+		├── composer.json
+		├── index.php
+		└── vendor
+		    ├── autoload.php
+		    └── composer
+		        ├── autoload_classmap.php
+		        ├── autoload_namespaces.php
+		        ├── autoload_psr4.php
+		        ├── autoload_real.php
+		        ├── autoload_static.php
+		        ├── ClassLoader.php
+		        └── LICENSE
+
+		  =>The most important file to you for now is autoload.php file.
+		  
