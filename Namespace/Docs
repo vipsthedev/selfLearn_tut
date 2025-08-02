@@ -1,0 +1,49 @@
+PHP Namespace
+
+		
+		PHP namespaces, how to define classes that belong to a namespace, and how to use namespaces.
+
+	Why namespaces
+
+
+		- your code has different classes with the same name. This problem is known as name collision.
+		-
+	What is a namespace
+
+		- It’s easier to understand namespaces by analogy to the directory structure in a filesystem.
+		- By definition, namespaces provide you with a way to group related classes and help you avoid any potential name collisions.
+
+	Set up a directory structure
+	-
+		-
+			-
+
+	Define a namespace
+
+		To define a namespace, you place the namespace keyword followed by a name at the very top of the page.
+
+
+		Store\Model:
+
+	Use Name space
+
+		use namespace\{className1, className2, ...}
+
+
+	Alias classes from a namespace
+		 class an alias when importing it:
+
+
+		 import namespace\className as newClassName;
+
+
+	Use classes from the global namespace
+		namespace App;
+
+
+
+		Use a namespace to group related classes.
+		Mimic the directory structure with the namespaces to make it easier to find the classes.
+		Use the use operator to import a namespace or a class from a namespace.
+		Use the as keyword to assign a namespace or a class of a namespace an alias.
+		$publish_at = new \DateTime();
